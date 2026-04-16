@@ -1,5 +1,5 @@
-
 import React from "react";
+import { Link, NavLink } from "react-router-dom";
 import myLogo from "../images/logo/logo.svg";
 import heartIco from "../images/control/heart.svg";
 import cartIco from "../images/control/shoppingbag_84031.svg";
@@ -19,7 +19,7 @@ function Header() {
                 <span className="burger-icon" />
                 <span className="burger-icon" />
               </button>
-              <a href="#" className="mobile-logo">
+              <Link to="/" className="mobile-logo">
                 <div className="mobile-logo-img">
                   <img src={myLogo} alt="логотип" />
                 </div>
@@ -27,14 +27,14 @@ function Header() {
                   <p>ЛенОптика</p>
                   <span>салон оптики</span>
                 </div>
-              </a>
+              </Link>
               <div className="mobile-icons">
-                <div className="mobile-icons-box">
+                <Link to="/favorites" className="mobile-icons-box">
                   <img src={heartIco} alt="избранное" />
-                </div>
-                <div className="mobile-icons-box">
+                </Link>
+                <Link to="/cart" className="mobile-icons-box">
                   <img src={cartIco} alt="корзина" />
-                </div>
+                </Link>
               </div>
             </div>
           </div>
@@ -50,7 +50,7 @@ function Header() {
               <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Закрыть" />
             </div>
             <div className="offcanvas-body">
-              <form className="mobile-search-form">
+              <form className="mobile-search-form" onSubmit={(e) => e.preventDefault()}>
                 <input className="mobile-search-input" type="text" placeholder="Поиск товаров..." />
                 <button className="mobile-search-btn" type="submit">
                   <img src={searchIco} alt="поиск" />
@@ -58,26 +58,61 @@ function Header() {
               </form>
               <ul className="mobile-nav-list">
                 <li className="mobile-nav-item">
-                  <a className="mobile-nav-link" href="#">Главная</a>
+                  <NavLink 
+                    className={({ isActive }) => 
+                      `mobile-nav-link ${isActive ? 'active-link' : ''}`
+                    } 
+                    to="/"
+                  >
+                    Главная
+                  </NavLink>
                 </li>
                 <li className="mobile-nav-item">
-                  <a className="mobile-nav-link" href="#">Каталог</a>
+                  <NavLink 
+                    className={({ isActive }) => 
+                      `mobile-nav-link ${isActive ? 'active-link' : ''}`
+                    } 
+                    to="/store"
+                  >
+                    Каталог
+                  </NavLink>
                 </li>
                 <li className="mobile-nav-item">
-                  <a className="mobile-nav-link" href="#">Проверка зрения</a>
+                  <NavLink 
+                    className={({ isActive }) => 
+                      `mobile-nav-link ${isActive ? 'active-link' : ''}`
+                    } 
+                    to="/eye-exam"
+                  >
+                    Проверка зрения
+                  </NavLink>
                 </li>
                 <li className="mobile-nav-item">
-                  <a className="mobile-nav-link" href="#">О нас</a>
+                  <NavLink 
+                    className={({ isActive }) => 
+                      `mobile-nav-link ${isActive ? 'active-link' : ''}`
+                    } 
+                    to="/about"
+                  >
+                    О нас
+                  </NavLink>
                 </li>
                 <li className="mobile-nav-item">
-                  <a className="mobile-nav-link" href="#">Контакты</a>
+                  <NavLink 
+                    className={({ isActive }) => 
+                      `mobile-nav-link ${isActive ? 'active-link' : ''}`
+                    } 
+                    to="/contacts"
+                  >
+                    Контакты
+                  </NavLink>
                 </li>
               </ul>
               <div className="mobile-user-actions">
-                <a href="#" className="mobile-user-link">
+                <Link to="/profile" className="mobile-user-link">
                   <img src={userIco} alt="профиль" />
                   <span>Личный кабинет</span>
-                </a>
+                </Link>
               </div>
               <div className="mobile-promotion">
                 <div className="mobile-promotion-ico">
@@ -90,7 +125,7 @@ function Header() {
             </div>
           </div>
           <div className="header__top">
-            <a href="#" className="header__top-logo">
+            <Link to="/" className="header__top-logo">
               <div className="header__logo-img">
                 <img src={myLogo} alt="логотип" />
               </div>
@@ -98,50 +133,85 @@ function Header() {
                 <p>ЛенОптика</p>
                 <span>салон оптики</span>
               </div>
-            </a>
+            </Link>
             <div className="header__top-search">
-              <form className="header__search-form">
+              <form className="header__search-form" onSubmit={(e) => e.preventDefault()}>
                 <input className="header__form-input" type="text" placeholder="Поиск товаров, брендов или категорий..." />
                 <button className="header__form-btn" type="submit">
-                  <img src={searchIco} />
+                  <img src={searchIco} alt="поиск" />
                 </button>
               </form>
             </div>
             <div className="header__top-icons">
-              <div className="header__icons-box">
-                <img src={heartIco} />
-              </div>
-              <div className="header__icons-box">
-                <img src={userIco} />
-              </div>
-              <div className="header__icons-box">
-                <img src={cartIco} />
-              </div>
+              <Link to="/favorites" className="header__icons-box">
+                <img src={heartIco} alt="избранное" />
+              </Link>
+              <Link to="/profile" className="header__icons-box">
+                <img src={userIco} alt="профиль" />
+              </Link>
+              <Link to="/cart" className="header__icons-box">
+                <img src={cartIco} alt="корзина" />
+              </Link>
             </div>
           </div>
           <div className="header__bottom">
             <nav className="header__bottom-nav">
               <ul className="header__nav-list">
                 <li className="header__nav-item">
-                  <a className="header__nav-link" href="#">Главная</a>
+                  <NavLink 
+                    className={({ isActive }) => 
+                      `header__nav-link ${isActive ? 'active-link' : ''}`
+                    } 
+                    to="/"
+                  >
+                    Главная
+                  </NavLink>
                 </li>
                 <li className="header__nav-item">
-                  <a className="header__nav-link" href="#">Каталог</a>
+                  <NavLink 
+                    className={({ isActive }) => 
+                      `header__nav-link ${isActive ? 'active-link' : ''}`
+                    } 
+                    to="/store"
+                  >
+                    Каталог
+                  </NavLink>
                 </li>
                 <li className="header__nav-item">
-                  <a className="header__nav-link" href="#">Проверка зрения</a>
+                  <NavLink 
+                    className={({ isActive }) => 
+                      `header__nav-link ${isActive ? 'active-link' : ''}`
+                    } 
+                    to="/eye-exam"
+                  >
+                    Проверка зрения
+                  </NavLink>
                 </li>
                 <li className="header__nav-item">
-                  <a className="header__nav-link" href="#">О нас</a>
+                  <NavLink 
+                    className={({ isActive }) => 
+                      `header__nav-link ${isActive ? 'active-link' : ''}`
+                    } 
+                    to="/about"
+                  >
+                    О нас
+                  </NavLink>
                 </li>
                 <li className="header__nav-item">
-                  <a className="header__nav-link" href="#">Контакты</a>
+                  <NavLink 
+                    className={({ isActive }) => 
+                      `header__nav-link ${isActive ? 'active-link' : ''}`
+                    } 
+                    to="/contacts"
+                  >
+                    Контакты
+                  </NavLink>
                 </li>
               </ul>
             </nav>
             <div className="header__bottom-promotion">
               <div className="header__promotion-ico">
-                <img src={promotionIco} />
+                <img src={promotionIco} alt="акция" />
               </div>
               <div className="header__promotion-text">
                 Скидка 15% на первый заказ
@@ -155,4 +225,3 @@ function Header() {
 }
 
 export default Header;
-

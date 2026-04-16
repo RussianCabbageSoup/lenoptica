@@ -6,7 +6,6 @@ import Footer from "../components/Footer";
 function ProfilePage() {
     return (  
         <div>
-            <Header></Header>
             <Profile></Profile>
             <Footer></Footer>
         </div>

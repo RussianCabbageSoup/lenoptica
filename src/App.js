@@ -6,34 +6,13 @@ import "./styles/index.css";
 import Home from "./pages/Home";
 import Store from "./pages/Store";
 import ProfilePage from "./pages/ProfilePage";
+import Header from "./components/Header";
 
 function App() {
   return (
     <Router>
       <div className="Wrapper">
-        
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-          <div className="container">
-            <Link className="navbar-brand" to="/">Мой Магазин</Link>
-            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-              <span className="navbar-toggler-icon"></span>
-            </button>
-            <div className="collapse navbar-collapse" id="navbarNav">
-              <ul className="navbar-nav ms-auto">
-                <li className="nav-item">
-                  <NavLink className="nav-link" to="/">Главная</NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink className="nav-link" to="/store">Магазин</NavLink>
-                </li>
-                <li className="nav-item">
-                  <NavLink className="nav-link" to="/profile">Профиль</NavLink>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-
+        <Header />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/store" element={<Store />} />

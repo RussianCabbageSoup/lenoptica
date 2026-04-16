@@ -1,3 +1,7 @@
+.active-link {
+    background-color: rgba(184, 105, 99, 0.349)
+}
+
 .header {
     box-shadow: 0 10px 35px 12px rgba(27, 6, 6, 0.185);
 }
@@ -102,13 +106,13 @@
     gap: 15px;
 }
 
-.header__nav-item {
+.header__nav-link {
     padding: 5px 10px;
     border-radius: 30px;
     transition: all 0.3s;
 }
 
-.header__nav-item:hover {
+.header__nav-link:hover {
     background-color: #c7352b59;
     font-weight: 700;
 }

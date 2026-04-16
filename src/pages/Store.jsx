@@ -7,7 +7,6 @@ import Footer from "../components/Footer";
 function Store() {
     return (  
         <div>
-            <Header></Header>
             <Hero></Hero>
             <Products></Products>
             <Footer></Footer>
