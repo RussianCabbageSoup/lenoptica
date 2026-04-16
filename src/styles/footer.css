@@ -28,13 +28,8 @@
 }
 
 .footer__about-logo span {
-    background: linear-gradient(120deg, #d9a442, #c7701e);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
     font-weight: 700;
-    letter-spacing: 2px;
-    font-size: 24px;
+    font-size: 28px;
 }
 
 .footer__about-text {
@@ -53,6 +48,10 @@
 
 .footer__top-col {
     padding: 0 15px;
+}
+
+#colContacts {
+    white-space: nowrap;
 }
 
 .footer__col-title {
@@ -102,7 +101,7 @@
     }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1100px) {
     .footer__top {
         flex-wrap: wrap;
         justify-content: flex-start;

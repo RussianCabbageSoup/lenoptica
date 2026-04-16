@@ -1,0 +1,173 @@
+.profile__inner {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 70px;
+}
+
+.profile__avatar {
+    padding: 20px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: fit-content;
+}
+
+.profile__avatar-img {
+    background-color: #b49f8d;
+    width: fit-content;
+    padding: 25px;
+    font-size: 48px;
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 6px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile__avatar-name {
+    font-size: 26px;
+}
+
+.profile__avatar-email {
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.profile__avatar-button {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border: 1px solid #c9baad;
+    padding: 5px 12px;
+    border-radius: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-bottom: 12px;
+    white-space: nowrap;
+}
+
+.profile__avatar-date {
+    font-size: 12px;
+}
+
+.profile__wishlist-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.profile__wishlist-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.profile__wishlist-button {
+    cursor: pointer;
+}
+
+.profile__wishlist-button:hover {
+    text-decoration: underline;
+}
+
+.profile__wishlist-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.profile__orders-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.profile__orders-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.profile__orders-button {
+    cursor: pointer;
+}
+
+.profile__orders-button:hover {
+    text-decoration: underline;
+}
+
+
+.profile__orders-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.orders__card-inner {
+    border: 1px solid #c9baad;
+    border-radius: 30px;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.281);
+    transition: all 0.3s;
+}
+
+.orders__card-inner:hover {
+    transform: scale(0.98);
+}
+
+.orders__card-id {
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.orders__card-date {
+    font-size: 14px;
+    color: #6d543e;
+}
+
+.orders__card-status {
+    font-size: 14px;
+}
+
+.orders__card-price {
+    padding-right: 70px;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+@media (max-width: 1400px) {
+    .profile__wishlist-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 1100px) {
+    .profile__inner {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 750px) {
+    .profile__wishlist-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .orders__card-price {
+        padding-right: 0;
+    }
+}

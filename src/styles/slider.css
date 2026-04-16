@@ -1,7 +1,7 @@
 .carousel__inner {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
     gap: 40px;
     margin-bottom: 100px;
 }
