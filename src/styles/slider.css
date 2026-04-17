@@ -156,4 +156,10 @@
     .carousel__content-text {
         margin-bottom: 0;
     }
+    .carousel__content-title.title {
+        font-size: 28px;
+    }
+    .carousel__content-text {
+        font-size: 14px;
+    }
 }

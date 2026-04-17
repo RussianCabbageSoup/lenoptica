@@ -1,7 +1,6 @@
 .about__inner {
     display: flex;
     align-items: center;
-    background: linear-gradient(135deg, #fff7ef 0%, #fff5ed 100%);
     margin-bottom: 100px;
     gap: 40px;
 }

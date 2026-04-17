@@ -6,7 +6,6 @@
 }
 
 .seasonal__content {
-    background: linear-gradient(135deg, #fff7ef 0%, #fff5ed 100%);
     padding: 20px;
     width: 100%;
 }
@@ -101,14 +100,14 @@
         align-items: center;
         text-align: center;
     }
+        .seasonal__img {
+        display: none;
+    }
 }
 
 @media (max-width: 600px) {
     .seasonal__inner {
         margin-bottom: 20px;
-    }
-    .seasonal__img {
-        display: none;
     }
     .seasonal__content {
         font-size: 0.8rem;
