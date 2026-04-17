@@ -6,7 +6,7 @@ import "./styles/index.css";
 import Home from "./pages/Home";
 import Store from "./pages/Store";
 import ProfilePage from "./pages/ProfilePage";
-import Header from "./components/Header";
+import Header from "./components/header/Header";
 import Footer from "./components/Footer";
 
 function App() {

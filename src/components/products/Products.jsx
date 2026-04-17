@@ -1,12 +1,10 @@
 import React from "react";
-import glass from "../images/png/glass.png";
-import diamodIco from "../images/icons/diamond_.svg";
-import rulerIco from "../images/icons/ruler.svg";
-import shieldIco from "../images/icons/shield_icon.svg";
-import ProductCard from "./ProductCard";
+import diamodIco from "../../images/icons/diamond_.svg";
+import rulerIco from "../../images/icons/ruler.svg";
+import shieldIco from "../../images/icons/shield_icon.svg";
 import ProductList from "./ProductList";
-import Pagination from "./UI/Pagination";
-import Filter from "./Filter";
+import Pagination from "../UI/Pagination";
+import Filter from "../filter/Filter";
 
 function Products() {
     return (

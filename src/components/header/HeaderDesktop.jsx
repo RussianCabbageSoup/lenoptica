@@ -1,11 +1,11 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
-import myLogo from "../images/logo/logo.svg";
-import heartIco from "../images/control/heart.svg";
-import cartIco from "../images/control/shoppingbag_84031.svg";
-import searchIco from "../images/control/magnifier.svg";
-import userIco from "../images/control/user.svg";
-import promotionIco from "../images/icons/promotion.svg";
+import myLogo from "../../images/logo/logo.svg";
+import heartIco from "../../images/control/heart.svg";
+import cartIco from "../../images/control/shoppingbag_84031.svg";
+import searchIco from "../../images/control/magnifier.svg";
+import userIco from "../../images/control/user.svg";
+import promotionIco from "../../images/icons/promotion.svg";
 import HeaderBurger from "./HeaderBurger";
 
 function HeaderDesktop() {
@@ -22,7 +22,7 @@ function HeaderDesktop() {
                     </div>
                 </Link>
                 <div className="header__top-search">
-                    <form className="header__search-form" onSubmit={(e) => e.preventDefault()}>
+                    <form className="header__search-form">
                         <input className="header__form-input" type="text" placeholder="Поиск товаров, брендов или категорий..." />
                         <button className="header__form-btn" type="submit">
                             <img src={searchIco} alt="поиск" />

@@ -48,6 +48,7 @@
     gap: 12px;
     backdrop-filter: blur(2px);
     border: 1px solid rgba(0, 112, 243, 0.1);
+    line-height: 1.2;
 }
 
 .about__experience-num {

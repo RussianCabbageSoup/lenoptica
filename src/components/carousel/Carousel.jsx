@@ -1,6 +1,6 @@
 import React from "react";
-import doneIco from "../images/icons/done.svg";
-import awardIco from "../images/icons/award.svg";
+import doneIco from "../../images/icons/done.svg";
+import awardIco from "../../images/icons/award.svg";
 import CarouselSlides from "./CarouselSlides";
 
 function Carousel() {

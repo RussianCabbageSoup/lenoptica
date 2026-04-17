@@ -1,7 +1,7 @@
 import React from "react";
 import SeasonalSection from "./SeasonalSection";
 import Appointment from "./Appointment";
-import Carousel from "./Carousel";
+import Carousel from "./carousel/Carousel";
 import About from "./About";
 import Contacts from "./Contacts";
 
@@ -9,7 +9,7 @@ function Main() {
     return (  
         <div>
             <SeasonalSection></SeasonalSection>
-            <Carousel></Carousel>
+            <Carousel/>
             <Appointment></Appointment>
             <About></About>
             <Contacts></Contacts>

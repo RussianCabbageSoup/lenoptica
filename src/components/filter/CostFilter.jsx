@@ -1,5 +1,5 @@
 import React from "react";
-import rubleIco from "../images/icons/ruble.svg";
+import rubleIco from "../../images/icons/ruble.svg";
 
 function CostFilter() {
     return (

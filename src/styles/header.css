@@ -1,5 +1,6 @@
 .active-link {
-    background-color: rgba(184, 105, 99, 0.349)
+    background-color: lightgray;
+    text-decoration: underline;
 }
 
 .header {
@@ -107,7 +108,7 @@
 }
 
 .header__nav-link {
-    padding: 5px 10px;
+    padding: 8px 18px;
     border-radius: 30px;
     transition: all 0.3s;
 }

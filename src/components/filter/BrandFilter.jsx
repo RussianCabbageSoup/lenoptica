@@ -1,5 +1,5 @@
 import React from "react";
-import tagIco from "../images/icons/tag.svg";
+import tagIco from "../../images/icons/tag.svg";
 
 function BrandFilter() {
     return (

@@ -5,8 +5,8 @@ import Swiper from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import prevBtn from "../images/control/Arrow1.svg";
-import nextBtn from "../images/control/Arrow2.svg";
+import prevBtn from "../../images/control/Arrow1.svg";
+import nextBtn from "../../images/control/Arrow2.svg";
 
 function CarouselSlides() {
     useEffect(() => {

@@ -1,11 +1,11 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
-import myLogo from "../images/logo/logo.svg";
-import heartIco from "../images/control/heart.svg";
-import cartIco from "../images/control/shoppingbag_84031.svg";
-import searchIco from "../images/control/magnifier.svg";
-import userIco from "../images/control/user.svg";
-import promotionIco from "../images/icons/promotion.svg";
+import myLogo from "../../images/logo/logo.svg";
+import heartIco from "../../images/control/heart.svg";
+import cartIco from "../../images/control/shoppingbag_84031.svg";
+import searchIco from "../../images/control/magnifier.svg";
+import userIco from "../../images/control/user.svg";
+import promotionIco from "../../images/icons/promotion.svg";
 
 function HeaderBurger() {
     return (
@@ -48,7 +48,7 @@ function HeaderBurger() {
                     <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Закрыть" />
                 </div>
                 <div className="offcanvas-body">
-                    <form className="mobile-search-form" onSubmit={(e) => e.preventDefault()}>
+                    <form className="mobile-search-form">
                         <input className="mobile-search-input" type="text" placeholder="Поиск товаров..." />
                         <button className="mobile-search-btn" type="submit">
                             <img src={searchIco} alt="поиск" />

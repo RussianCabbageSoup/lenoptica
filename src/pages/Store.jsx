@@ -1,6 +1,6 @@
 import React from "react";
 import Hero from "../components/Hero";
-import Products from "../components/Products";
+import Products from "../components/products/Products";
 
 function Store() {
     return (  

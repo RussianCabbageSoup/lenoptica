@@ -1,5 +1,5 @@
 import React from "react";
-import typeIco from "../images/icons/type.svg";
+import typeIco from "../../images/icons/type.svg";
 
 function TypeFilter() {
     return (

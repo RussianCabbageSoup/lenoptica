@@ -1,5 +1,5 @@
 import React from "react";
-import glass from "../images/png/glass.png";
+import glass from "../../images/png/glass.png";
 
 function ProductCard() {
     return (

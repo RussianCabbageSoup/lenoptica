@@ -39,7 +39,7 @@ function About() {
                             <img src={photo} alt="салон оптики" />
                         </div>
                         <div className="about__images-experience">
-                            <div className="about__experience-num">18+</div>
+                            <div className="about__experience-num">19+</div>
                             <div className="about__experience-text">лет безупречной<br />работы</div>
                         </div>
                     </div>

@@ -1,6 +1,5 @@
 import React from "react";
-import Header from "../components/Header";
-import Profile from "../components/Profile";
+import Profile from "../components/profile/Profile";
 import Footer from "../components/Footer";
 
 function ProfilePage() {
