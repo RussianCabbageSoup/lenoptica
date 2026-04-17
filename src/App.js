@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import Store from "./pages/Store";
 import ProfilePage from "./pages/ProfilePage";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/store" element={<Store />} />
           <Route path="/profile" element={<ProfilePage />} />
         </Routes>
+        <Footer />
       </div>
     </Router>
   );

@@ -7,7 +7,6 @@ function Home() {
     return (  
         <div>
             <Main></Main>
-            <Footer></Footer>
         </div>
     );
 }

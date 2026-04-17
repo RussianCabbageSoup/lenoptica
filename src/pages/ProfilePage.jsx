@@ -7,7 +7,6 @@ function ProfilePage() {
     return (  
         <div>
             <Profile></Profile>
-            <Footer></Footer>
         </div>
     );
 }
