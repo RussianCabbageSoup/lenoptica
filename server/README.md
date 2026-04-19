@@ -1,0 +1,11 @@
+├── cors@2.8.6
+├── dotenv@17.4.2
+├── express-fileupload@1.5.2
+├── express@5.2.1
+├── i@0.3.7
+├── jsonwebtoken@9.0.3
+├── nodemon@3.1.14
+├── pg-hstore@2.3.4
+├── pg@8.20.0
+├── sequelize@6.37.8
+└── uuid@13.0.0
