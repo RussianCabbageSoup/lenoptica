@@ -136,6 +136,12 @@
     }
 }
 
+@media (max-width: 700px) { 
+    .swiper__buttons-box {
+        display: none;
+    }
+}
+
 @media (max-width: 650px) {
     .carousel__inner {
         gap: 0;
