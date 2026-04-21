@@ -7,6 +7,7 @@ import searchIco from "../../images/control/magnifier.svg";
 import userIco from "../../images/control/user.svg";
 import promotionIco from "../../images/icons/promotion.svg";
 import HeaderBurger from "./HeaderBurger";
+import ModalList from "../modals/ModalList";
 
 function HeaderDesktop() {
     return (
@@ -39,6 +40,7 @@ function HeaderDesktop() {
                     <Link to="/cart" className="header__icons-box">
                         <img src={cartIco} alt="корзина" />
                     </Link>
+                    <ModalList />
                 </div>
             </div>
             <div className="header__bottom">
