@@ -70,7 +70,7 @@ function HeaderBurger() {
                                 className={({ isActive }) =>
                                     `mobile-nav-link ${isActive ? 'active-link' : ''}`
                                 }
-                                to="/store"
+                                to="/products"
                             >
                                 Каталог
                             </NavLink>

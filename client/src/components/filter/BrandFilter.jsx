@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import tagIco from "../../images/icons/tag.svg";
+import BrandFilterItem from "./BrandFilterItem";
+import { Context } from "../../index";
 
 function BrandFilter() {
+    const {product} = useContext(Context);
     return (
         <div className="filter__brand">
             <div className="filter__brand-title">
@@ -11,21 +14,12 @@ function BrandFilter() {
                 <div className="filter__title-text">Бренд</div>
             </div>
             <ul className="filter__brand-list">
-                <li className="filter__brand-item">
-                    <label className="filter__brand-checkbox">
-                        <input type="checkbox" name="brand" defaultValue="ray-ban" /> RaY-bAN
-                    </label>
-                </li>
-                <li className="filter__brand-item">
-                    <label className="filter__brand-checkbox">
-                        <input type="checkbox" name="brand" defaultValue="ray-ban" /> RaY-bAN
-                    </label>
-                </li>
-                <li className="filter__brand-item">
-                    <label className="filter__brand-checkbox">
-                        <input type="checkbox" name="brand" defaultValue="ray-ban" /> RaY-bAN
-                    </label>
-                </li>
+                {product.brands.map(brand => 
+                    <BrandFilterItem
+                        key={brand.id} 
+                        brand={brand.name}
+                    />
+                )}
             </ul>
         </div>
     );

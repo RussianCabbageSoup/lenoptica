@@ -9,6 +9,7 @@
 @import url(products.css);
 @import url(profile.css);
 @import url(modal.css);
+@import url(single-product.css);
 
 @font-face {
     font-family: 'FreeMonos';
@@ -33,6 +34,7 @@ input, textarea, button {border: none; outline: none; background: none;}
 html, body {
     font-family: 'FreeMonos', sans-serif;
     height: 100%;
+    min-height: 100%;
     line-height: 1.4;
     color: #2c221b;
 }

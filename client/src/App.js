@@ -9,17 +9,18 @@ import ProfilePage from "./pages/ProfilePage";
 import Header from "./components/header/Header";
 import Footer from "./components/Footer";
 import { Context } from "./index";
+import ProductPage from "./pages/ProductPage";
 
 function App() {
   const {user} = useContext(Context)
-  console.log(user)
   return (
     <Router>
-      <div className="Wrapper">
+      <div className="wrapper">
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/store" element={<Store />} />
+          <Route path="/products" element={<Store />} />
+          <Route path="/products/:id" element={<ProductPage />} />
           <Route path="/profile" element={<ProfilePage />} />           
         </Routes>
         <Footer />

@@ -86,14 +86,35 @@
     width: 30px;
 }
 
-.header__icons-box {
+.header__icons-item {
     padding: 10px;
     border-radius: 50%;
     transition: all 0.3s;
 }
 
-.header__icons-box:hover {
+.header__icons-item:last-child {
+    margin-left: 20px;
+}
+
+.header__icons-item:last-child:hover {
+    transform: scale(1.2);
+}
+
+.header__icons-item:not(:last-child):hover {
     background-color: #c7352b59;
+}
+
+.header__top-btn {
+    font-size: 16px;
+    padding: 3px 20px;
+    border-radius: 7px;
+    border: 1px solid black;
+    transition: all 0.2s;
+}
+
+.header__top-btn:hover {
+    background: #3f3e3e;
+    color: #fff
 }
 
 .header__bottom {
@@ -234,7 +255,6 @@
 }
 
 .offcanvas {
-    max-width: 320px;
     background: #fff;
 }
 
@@ -386,5 +406,14 @@
 @media (min-width: 1001px) {
     .mobile-header {
         display: none;
+    }
+}
+
+@media (max-width: 550px) {
+    .offcanvas.offcanvas-start,
+    .offcanvas.offcanvas-end,
+    .offcanvas.offcanvas-top,
+    .offcanvas.offcanvas-bottom {
+        width: 100%;
     }
 }

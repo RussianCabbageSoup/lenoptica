@@ -4,6 +4,11 @@
     padding: 8px 18px;
 }
 
+.modal-content p {
+    font-size: 22px;
+    margin-bottom: 0;
+}
+
 .modal__content-head {
     display: flex;
     justify-content: space-between;
@@ -55,6 +60,12 @@
 
 .modal__form-buttons button {
     padding: 5px 12px;
+}
+
+.modal__form-buttons .button:first-child {
+    background-color: transparent;
+    border: 1px solid black;
+    color: black
 }
 
 .modal__content-text {
