@@ -1,16 +1,16 @@
 import React from "react";
-import Profile from "../components/profile/Profile";
+import Admin from "../components/admin/Admin";
 import Header from "../components/header/Header";
 import Footer from "../components/Footer";
 
-function ProfilePage() {
+function AdminPage() {
     return (  
         <div>
             <Header />
-            <Profile />
+            <Admin />
             <Footer />
         </div>
     );
 }
 
-export default ProfilePage;
+export default AdminPage;

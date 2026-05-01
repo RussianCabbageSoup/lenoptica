@@ -1,0 +1,116 @@
+.bg__wrapper {
+    background: linear-gradient(120deg, #d97742, #c73b1e);
+    min-height: 100vh;
+}
+
+.login {
+    max-width: 500px;
+    padding: 20px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, #fff7ef 0%, #fff5ed 100%);
+    border-radius: 20px;
+    transform: translateY(50%);
+}
+
+.login__title {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.login__form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.login__form-input {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.404);
+    border-radius: 30px;
+    padding: 8px 18px;
+}
+
+.login__form-input img {
+    width: 20px;
+    opacity: 0.5;
+    user-select: none;
+}
+
+.login__form-input input {
+    width: 100%;
+}
+
+.login__form-reset {
+    align-self: flex-end;
+    text-decoration: underline;
+    margin-bottom: 20px;
+}
+
+.login__form-btn {
+    margin-bottom: 30px;
+}
+
+.login__extra-note {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.login__extra-note * {
+    text-decoration: underline;
+}
+
+.registration {
+    max-width: 500px;
+    padding: 20px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, #fff7ef 0%, #fff5ed 100%);
+    border-radius: 20px;
+    transform: translateY(50%);
+}
+
+.registration__title {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.registration__form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.registration__form-input {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.404);
+    border-radius: 30px;
+    padding: 8px 18px;
+}
+
+.registration__form-input img {
+    width: 20px;
+    opacity: 0.5;
+    user-select: none;
+}
+
+.registration__form-input input {
+    width: 100%;
+}
+
+.registration__form-btn {
+    margin: 30px 0;
+}
+
+.registration__extra-note {
+    text-align: center;
+}
+
+.registration__extra-note * {
+    text-decoration: underline;
+}

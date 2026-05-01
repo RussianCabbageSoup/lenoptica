@@ -70,7 +70,6 @@
 }
 
 .seasonal__img-box img {
-    display: block;
     width: 100%;
     height: 100%;
 }
@@ -94,13 +93,17 @@
         margin-bottom: 80px;
     }
     .seasonal__content {
+        max-width: none;
         width: 100%;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        text-align: center;
+        align-items: flex-start;
     }
-        .seasonal__img {
+    .seasonal__content-title.title {
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    .seasonal__img {
         display: none;
     }
 }
@@ -114,5 +117,8 @@
     }
     .seasonal__content-title.title {
         font-size: 28px;
+    }
+    .seasonal__content-subtitle.subtitle {
+        margin-bottom: 12px;
     }
 }

@@ -22,7 +22,7 @@ const HeaderDesktop = observer(() => {
             const response = await login()
         }
         else {
-            const response = await registration()                           //  2:05:00
+            const response = await registration()                         
         }
     }
 
@@ -55,8 +55,11 @@ const HeaderDesktop = observer(() => {
                             <Link to="/profile" className="header__icons-item">
                                 <img src={userIco} alt="профиль" />
                             </Link>
-                            <Link to="/cart" className="header__icons-item">
+                            <Link to="/cart" className="header__icons-item"> 
                                 <img src={cartIco} alt="корзина" />
+                            </Link>
+                            <Link to="/admin" className="header__icons-item">
+                                АДМИН
                             </Link>
                             <button className="header__icons-item" data-bs-toggle="modal" data-bs-target="#logoutModal">
                                 <img src={logoutIco} alt="Выйти" />
@@ -64,9 +67,12 @@ const HeaderDesktop = observer(() => {
                         </div>
                         :
                         <div className="header__top-buttons">
-                            <button type="button" className="header__top-btn" data-bs-toggle="modal" data-bs-target="#loginModal">
+                            <Link to="/login" className="header__top-btn">
                                 Войти
-                            </button>
+                            </Link>
+                            <Link to="/admin" className="header__top-btn">
+                                Админ
+                            </Link>
                         </div>
                     }
                     <ModalList />
