@@ -1,8 +1,10 @@
 import React from "react";
 import searchIco from "../../images/control/magnifier.svg";
 import editIco from "../../images/control/edit.svg";
-import deleteIco from "../../images/control/delete.svg";
 import plusIco from "../../images/icons/1486395885-plus_80605.svg";
+import BrandSelect from "./BrandSelect";
+import TypeSelect from "./TypeSelect";
+import ProductTable from "./ProductTable";
 
 function Admin() {
     return (
@@ -40,30 +42,7 @@ function Admin() {
                                     <th />
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Товар 1</td>
-                                    <td>Тип 1</td>
-                                    <td>Бренд 1</td>
-                                    <td>Цена</td>
-                                    <td>Наличие</td>
-                                    <td className="table__buttons">
-                                        <img src={editIco} alt="редактировать" />
-                                        <img src={deleteIco} alt="удалить" />
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Т1</td>
-                                    <td>Тип уацфффффффф1</td>
-                                    <td>Бренд 1</td>
-                                    <td>Цеауцффна</td>
-                                    <td>Наличие</td>
-                                    <td>
-                                        <img src={editIco} alt="редактировать" />
-                                        <img src={deleteIco} alt="удалить" />
-                                    </td>
-                                </tr>
-                            </tbody>
+                            <ProductTable />
                         </table>
                     </div>
                 </div>
@@ -80,26 +59,8 @@ function Admin() {
                                 </label>
                                 <input type="text" className="form__group-input" placeholder="Введите название" required />
                             </div>
-                            <div className="form__group">
-                                <label className="form__group-label">
-                                    Тип
-                                </label>
-                                <select className="form__group-select" required>
-                                    <option value="type1">тип 1</option>
-                                    <option value="type2">тип 2</option>
-                                    <option value="type3">тип 3</option>
-                                </select>
-                            </div>
-                            <div className="form__group">
-                                <label className="form__group-label">
-                                    Бренд
-                                </label>
-                                <select className="form__group-select" required>
-                                    <option value="type1">ыы 1</option>
-                                    <option value="type2">тип 2</option>
-                                    <option value="type3">тип 3</option>
-                                </select>
-                            </div>
+                            <TypeSelect />
+                            <BrandSelect />
                             <div className="form__group">
                                 <label className="form__group-label">
                                     Цена (₽)
@@ -133,26 +94,8 @@ function Admin() {
                                 </label>
                                 <input type="text" className="form__group-input" placeholder="Введите название" required />
                             </div>
-                            <div className="form__group">
-                                <label className="form__group-label">
-                                    Тип
-                                </label>
-                                <select className="form__group-select" required>
-                                    <option value="type1">тип 1</option>
-                                    <option value="type2">тип 2</option>
-                                    <option value="type3">тип 3</option>
-                                </select>
-                            </div>
-                            <div className="form__group">
-                                <label className="form__group-label">
-                                    Бренд
-                                </label>
-                                <select className="form__group-select" required>
-                                    <option value="type1">ыы 1</option>
-                                    <option value="type2">тип 2</option>
-                                    <option value="type3">тип 3</option>
-                                </select>
-                            </div>
+                            <TypeSelect />
+                            <BrandSelect />
                             <div className="form__group">
                                 <label className="form__group-label">
                                     Цена (₽)

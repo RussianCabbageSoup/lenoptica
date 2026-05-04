@@ -18,7 +18,7 @@ export default class ProductStore {
             {id: 2, name: 'Очки 2', price: 1000, rating: 5, img: imgs},
             {id: 3, name: 'Очки 3', price: 1000, rating: 5, img: imgs},
             {id: 4, name: 'Очки 4', price: 1000, rating: 5, img: imgs},
-            {id: 5, name: 'Очки 5', price: 1000, rating: 5, img: imgs},
+            {id: 5, name: 'Очки 5', price: 1000, rating: 5, img: imgs},                             
             {id: 6, name: 'Очки 6', price: 1000, rating: 5, img: imgs},
         ]
 

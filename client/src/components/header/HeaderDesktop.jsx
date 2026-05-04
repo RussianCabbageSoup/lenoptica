@@ -58,9 +58,11 @@ const HeaderDesktop = observer(() => {
                             <Link to="/cart" className="header__icons-item"> 
                                 <img src={cartIco} alt="корзина" />
                             </Link>
-                            <Link to="/admin" className="header__icons-item">
-                                АДМИН
-                            </Link>
+                            <div className="header__top-buttons">
+                                <Link to="/admin" className="header__top-btn">
+                                    Админ
+                                </Link>
+                            </div>
                             <button className="header__icons-item" data-bs-toggle="modal" data-bs-target="#logoutModal">
                                 <img src={logoutIco} alt="Выйти" />
                             </button>
@@ -69,9 +71,6 @@ const HeaderDesktop = observer(() => {
                         <div className="header__top-buttons">
                             <Link to="/login" className="header__top-btn">
                                 Войти
-                            </Link>
-                            <Link to="/admin" className="header__top-btn">
-                                Админ
                             </Link>
                         </div>
                     }

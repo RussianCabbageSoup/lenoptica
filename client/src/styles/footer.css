@@ -91,6 +91,10 @@
     border-radius: 30px;
 }
 
+.footer__subscription-form input {
+    width: 100%;
+}
+
 .footer__bottom {
     text-align: center;
 }
