@@ -3,16 +3,18 @@ import BrandSelectItem from "./BrandSelectItem";
 import { Context } from "../../index";
 
 function BrandSelect() {
-    const {brand} = useContext(Context);
+    const {product} = useContext(Context);
 
     return (
         <div className="form__group">
             <label className="form__group-label">
                 Бренд
             </label>
-            {brand.brands.map(brand =>
-                <BrandSelectItem brand={brand} />
-            )}
+            <select className="form__group-select" required>
+                {product.brands.map(brand =>
+                    <BrandSelectItem key={brand.id} brand={brand} />
+                )}
+            </select>
         </div>
     );
 }

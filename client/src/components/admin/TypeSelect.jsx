@@ -1,15 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Context } from "../../index";
+import TypeSelectItem from "./TypeSelectItem";
 
 function TypeSelect() {
+
+    const {product} = useContext(Context);
+
     return (
         <div className="form__group">
             <label className="form__group-label">
                 Тип
             </label>
             <select className="form__group-select" required>
-                <option value="type1">тип 1</option>
-                <option value="type2">тип 2</option>
-                <option value="type3">тип 3</option>
+                {product.types.map(type => 
+                    <TypeSelectItem key={type.id} type={type} />
+                )}
             </select>
         </div>
     );

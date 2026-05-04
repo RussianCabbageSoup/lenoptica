@@ -11,20 +11,10 @@ import HeaderBurger from "./HeaderBurger";
 import ModalList from "../modals/ModalList";
 import { Context } from "../../index";
 import { observer } from "mobx-react-lite";
-import { login, registration } from "../../http/userAPI";
 
 const HeaderDesktop = observer(() => {
     const { user } = useContext(Context);
     const isAuth = user.isAuth;
-
-    const click = async () => {
-        if (isAuth) {
-            const response = await login()
-        }
-        else {
-            const response = await registration()                         
-        }
-    }
 
     return (
         <div>

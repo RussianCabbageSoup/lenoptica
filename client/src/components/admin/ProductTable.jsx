@@ -9,7 +9,7 @@ function ProductTable() {
     return (
         <tbody>
             {product.products.map(product => 
-                <ProductTableItem product={product} />
+                <ProductTableItem key={product.id} product={product} />
             )}
         </tbody>
     );
