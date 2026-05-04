@@ -12,8 +12,9 @@ const LogoutModal = observer(() => {
     const handleLogout = () => {
         user.setUser({});
         user.setIsAuth(false);
+        localStorage.removeItem('token');
     };
-    
+
     return (
         <div className="modal fade" id="logoutModal" tabIndex={-1} aria-labelledby="logoutModal" aria-hidden="true">
             <div className="modal-dialog">
@@ -23,8 +24,8 @@ const LogoutModal = observer(() => {
                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Закрыть" />
                     </div>
                     <div className="modal__form-buttons">
-                        <button className="button">Отмена</button>
-                        <button className="button" onClick={handleLogout}>Выйти</button>
+                        <button className="button" data-bs-dismiss="modal">Отмена</button>
+                        <button className="button" onClick={handleLogout} data-bs-dismiss="modal">Выйти</button>
                     </div>
                 </div>
             </div>

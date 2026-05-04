@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import myLogo from "../../images/logo/logo.svg";
 import heartIco from "../../images/control/heart.svg";
@@ -15,6 +15,11 @@ import { observer } from "mobx-react-lite";
 const HeaderDesktop = observer(() => {
     const { user } = useContext(Context);
     const isAuth = user.isAuth;
+
+    useEffect(() => {
+        const token = localStorage.getItem('token');
+        user.setIsAuth(!!token && user.isAuth);
+    }, [user.isAuth]);
 
     return (
         <div>
