@@ -1,10 +1,8 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../../index";
 import TypeSelectItem from "./TypeSelectItem";
-import { fetchTypes } from "../../http/productAPI";
+import { createType, fetchTypes } from "../../http/productAPI";
 import { observer } from "mobx-react-lite";
-import plusIco from "../../images/icons/1486395885-plus_80605.svg";
-
 
 const TypeSelect = observer(() => {
 
@@ -14,19 +12,45 @@ const TypeSelect = observer(() => {
         fetchTypes().then(data => product.setTypes(data))
     }, []);
 
+    const [value, setValue] = useState('');
+    const [selectedType, setSelectedType] = useState('');
+
+    const addType = () => {
+        if (value) {
+            createType({ name: value }).then(newType => {
+                product.setTypes([...product.types, newType]);
+                setSelectedType(newType.id);
+                setValue('')
+            })
+        } else {
+            console.log('rej')
+        }
+    }
+
     return (
         <div className="form__group">
             <label className="form__group-label">
                 Тип
             </label>
-            <select className="form__group-select" required>
+            <select 
+                className="form__group-select" 
+                value={selectedType} 
+                onChange={e => setSelectedType(e.target.value)}
+                required
+            >
                 {product.types.map(type =>
                     <TypeSelectItem key={type.id} type={type} />
                 )}
             </select>
             <div className="form__group-new">
-                <input type="text" className="form__group-input" placeholder="Новый тип"/>
-                <button type="button">Создать</button>
+                <input
+                    type="text"
+                    className="form__group-input"
+                    placeholder="Новый тип"
+                    value={value}
+                    onChange={e => setValue(e.target.value)}
+                />
+                <button type="button" onClick={addType}>Создать</button>
             </div>
         </div>
     );

@@ -1,8 +1,8 @@
 import React from "react";
 
-function TypeSelectItem({type}) {
+const TypeSelectItem = ({type}) => {
     return (  
-        <option value={type.name}>{type.name}</option>
+        <option value={type.id}>{type.name}</option>
     );
 }
 

@@ -2,7 +2,7 @@ import React from "react";
 
 function BrandSelectItem({brand}) {
     return (
-        <option value={brand.name}>{brand.name}</option>
+        <option value={brand.id}>{brand.name}</option>
     );
 }
 
