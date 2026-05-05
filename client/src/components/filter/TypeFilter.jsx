@@ -1,15 +1,22 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import typeIco from "../../images/icons/type.svg";
 import TypeFilterItem from "./TypeFilterItem";
 import { Context } from "../../index";
+import { observer } from "mobx-react-lite";
+import { fetchTypes } from "../../http/productAPI";
 
-function TypeFilter() {
+const TypeFilter = observer(() => {
     const {product} = useContext(Context);
+
+    useEffect(() => {
+        fetchTypes().then(data => product.setTypes(data))
+    }, []);
+
     return (
         <div className="filter__type">
             <div className="filter__type-title">
                 <div className="filter__title-ico">
-                    <img src={typeIco} />
+                    <img src={typeIco} alt=""/>
                 </div>
                 <div className="filter__title-text">Тип</div>
             </div>
@@ -20,6 +27,6 @@ function TypeFilter() {
             </ul>
         </div>
     );
-}
+})
 
 export default TypeFilter;

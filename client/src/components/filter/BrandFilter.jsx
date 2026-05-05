@@ -1,15 +1,22 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import tagIco from "../../images/icons/tag.svg";
 import BrandFilterItem from "./BrandFilterItem";
 import { Context } from "../../index";
+import { fetchBrands } from "../../http/productAPI";
+import { observer } from "mobx-react-lite";
 
-function BrandFilter() {
+const BrandFilter = observer(() => {
     const {product} = useContext(Context);
+
+    useEffect(() => {
+        fetchBrands().then(data => product.setBrands(data));
+    }, []);
+
     return (
         <div className="filter__brand">
             <div className="filter__brand-title">
                 <div className="filter__title-ico">
-                    <img src={tagIco} />
+                    <img src={tagIco} alt="" />
                 </div>
                 <div className="filter__title-text">Бренд</div>
             </div>
@@ -23,6 +30,6 @@ function BrandFilter() {
             </ul>
         </div>
     );
-}
+})
 
 export default BrandFilter;

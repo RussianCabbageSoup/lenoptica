@@ -1,26 +1,12 @@
 import { makeAutoObservable } from "mobx";
-import imgs from '../images/png/glass.png'
 
 export default class ProductStore {
     constructor() {
-        this._types = [
-            {id: 1, name: 'Солнцезащитные'},
-            {id: 2, name: 'Особые'}
-        ]
+        this._types = []
 
-        this._brands = [
-            {id: 1, name: 'Brand1'},
-            {id: 2, name: 'Brand2'}
-        ]
+        this._brands = []
         
-        this._products = [
-            {id: 1, name: 'Очки 1', price: 1000, rating: 5, img: imgs},
-            {id: 2, name: 'Очки 2', price: 1000, rating: 5, img: imgs},
-            {id: 3, name: 'Очки 3', price: 1000, rating: 5, img: imgs},
-            {id: 4, name: 'Очки 4', price: 1000, rating: 5, img: imgs},
-            {id: 5, name: 'Очки 5', price: 1000, rating: 5, img: imgs},                             
-            {id: 6, name: 'Очки 6', price: 1000, rating: 5, img: imgs},
-        ]
+        this._products = []
 
         this._selectedBrand = {}
         this._selectedType = {}

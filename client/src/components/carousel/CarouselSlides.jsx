@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import CarouselSlide from "./CarouselSlide";
 import { useEffect } from "react";
 import Swiper from 'swiper';
@@ -7,9 +7,15 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import prevBtn from "../../images/control/Arrow1.svg";
 import nextBtn from "../../images/control/Arrow2.svg";
+import { Context } from "../../index";
+import { fetchProducts } from "../../http/productAPI";
+import { observer } from "mobx-react-lite";
 
-function CarouselSlides() {
-    useEffect(() => {
+const CarouselSlides = observer(() => {
+
+    const { product } = useContext(Context);
+
+    const initSwiper = () => {
         const swiper = new Swiper('.Carousel', {
             slidesPerView: 1.8,
             centeredSlides: true,
@@ -34,17 +40,29 @@ function CarouselSlides() {
         return () => {
             if (swiper) swiper.destroy();
         };
+    }
+
+    useEffect(() => {
+        fetchProducts().then(data =>
+            product.setProducts(data.rows)
+        )
+        initSwiper()
     }, []);
+
 
     return (
         <div className="swiper Carousel">
             <div className="swiper-wrapper">
-                <CarouselSlide />
-                <CarouselSlide />
-                <CarouselSlide />
-                <CarouselSlide />
-                <CarouselSlide />
-                <CarouselSlide />
+                {/* {product.products.map(product => 
+                    <CarouselSlide key={product.id} product={product} />
+                )} */}
+                <CarouselSlide product={product.products} />
+                <CarouselSlide product={product.products} />
+                <CarouselSlide product={product.products} />
+                <CarouselSlide product={product.products} />
+                <CarouselSlide product={product.products} />
+                <CarouselSlide product={product.products} />
+                <CarouselSlide product={product.products} />
             </div>
             <div className="swiper-pagination" />
             <div className="swiper__buttons-box">
@@ -58,6 +76,6 @@ function CarouselSlides() {
         </div>
 
     );
-}
+})
 
 export default CarouselSlides;

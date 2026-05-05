@@ -14,10 +14,10 @@ function Carousel() {
                         <h2 className="carousel__content-title title">Лидеры продаж за <span>всё время</span></h2>
                         <div className="carousel__content-ico">
                             <div className="carousel__ico-item">
-                                <img src={doneIco} />
+                                <img src={doneIco} alt="" />
                             </div>
                             <div className="carousel__ico-item">
-                                <img src={awardIco} />
+                                <img src={awardIco} alt="" />
                             </div>
                         </div>
                         <div className="carousel__content-text">

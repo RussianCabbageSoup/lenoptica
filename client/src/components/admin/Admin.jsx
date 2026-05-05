@@ -19,14 +19,14 @@ function Admin() {
                     <div className="dashboard__list-header">
                         <h3>Список товаров</h3>
                         <form className="list__header-search">
-                            <img src={searchIco} />
+                            <img src={searchIco} alt=""/>
                             <input type="text" placeholder="Поиск по названию, типу, бренду" />
                         </form>
                     </div>
                     <div className="dashboard__list-header" style={{ opacity: '0.3' }}>
                         <h3>Список пользователей</h3>
                         <form className="list__header-search">
-                            <img src={searchIco} />
+                            <img src={searchIco} alt="" />
                             <input type="text" placeholder="Поиск по имени, почте, роли" />
                         </form>
                     </div>
@@ -49,7 +49,7 @@ function Admin() {
                 <div className="admin__control">
                     <div className="control__new">
                         <div className="control__title">
-                            <img src={plusIco} alt />
+                            <img src={plusIco} alt="" />
                             <h2>Новый товар</h2>
                         </div>
                         <form className="control__form">
@@ -84,7 +84,7 @@ function Admin() {
                     </div>
                     <div className="control__edit">
                         <div className="control__title">
-                            <img src={editIco} alt />
+                            <img src={editIco} alt="" />
                             <h2>Редактирование товара</h2>
                         </div>
                         <form className="control__form">

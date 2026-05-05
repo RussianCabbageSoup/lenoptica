@@ -1,11 +1,12 @@
 import React from "react";
 import ProductCard from "../products/ProductCard";
+import { Link } from "react-router-dom";
 
-function CarouselSlide() {
+function CarouselSlide({product}) {
     return (  
-        <a className="swiper-slide" href="#">
-            <ProductCard />
-        </a>
+        <Link to="/product" className="swiper-slide">
+            <ProductCard product={product}/>
+        </Link>
     );
 }
 
