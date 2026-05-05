@@ -1,10 +1,8 @@
 import React from "react";
 import searchIco from "../../images/control/magnifier.svg";
-import editIco from "../../images/control/edit.svg";
-import plusIco from "../../images/icons/1486395885-plus_80605.svg";
-import BrandSelect from "./BrandSelect";
-import TypeSelect from "./TypeSelect";
 import ProductTable from "./ProductTable";
+import ControlNewProduct from "./ControlNewProduct";
+import ControlEditProduct from "./ControlEditProduct";
 
 function Admin() {
     return (
@@ -31,93 +29,12 @@ function Admin() {
                         </form>
                     </div>
                     <div className="dashboard__list">
-                        <table className="dashboard__table">
-                            <thead className="table__head">
-                                <tr>
-                                    <th>id</th>
-                                    <th>Название</th>
-                                    <th>Тип</th>
-                                    <th>БрЕнд</th>
-                                    <th>цЕна</th>
-                                    <th>наЛИЧие</th>
-                                    <th />
-                                </tr>
-                            </thead>
-                            <ProductTable />
-                        </table>
+                        <ProductTable />
                     </div>
                 </div>
                 <div className="admin__control">
-                    <div className="control__new">
-                        <div className="control__title">
-                            <img src={plusIco} alt="" />
-                            <h2>Новый товар</h2>
-                        </div>
-                        <form className="control__form">
-                            <div className="form__group">
-                                <label className="form__group-label">
-                                    Название товара
-                                </label>
-                                <input type="text" className="form__group-input" placeholder="Введите название" required />
-                            </div>
-                            <TypeSelect />
-                            <BrandSelect />
-                            <div className="form__group">
-                                <label className="form__group-label">
-                                    Цена (₽)
-                                </label>
-                                <input type="number" className="form__group-input" placeholder={0.00} step={1.00} required />
-                            </div>
-                            <div className="form__group">
-                                <label className="form__group-label">
-                                    Наличие
-                                </label>
-                                <input type="number" className="form__group-input" placeholder={0} step={1} required />
-                            </div>
-                            <div className="form__group">
-                                <label className="form__group-label">
-                                    Описание
-                                </label>
-                                <textarea className="form__group-textarea" placeholder="Описание товара" defaultValue={""} />
-                            </div>
-                            <button type="submit" className="form__button button">Сохранить</button>
-                        </form>
-                    </div>
-                    <div className="control__edit">
-                        <div className="control__title">
-                            <img src={editIco} alt="" />
-                            <h2>Редактирование товара</h2>
-                        </div>
-                        <form className="control__form">
-                            <div className="form__group">
-                                <label className="form__group-label">
-                                    Название товара
-                                </label>
-                                <input type="text" className="form__group-input" placeholder="Введите название" required />
-                            </div>
-                            <TypeSelect />
-                            <BrandSelect />
-                            <div className="form__group">
-                                <label className="form__group-label">
-                                    Цена (₽)
-                                </label>
-                                <input type="number" className="form__group-input" placeholder={0.00} step={1.00} required />
-                            </div>
-                            <div className="form__group">
-                                <label className="form__group-label">
-                                    Наличие
-                                </label>
-                                <input type="number" className="form__group-input" placeholder={0} step={1} required />
-                            </div>
-                            <div className="form__group">
-                                <label className="form__group-label">
-                                    Описание
-                                </label>
-                                <textarea className="form__group-textarea" placeholder="Описание товара" defaultValue={""} />
-                            </div>
-                            <button type="submit" className="form__button button">Сохранить</button>
-                        </form>
-                    </div>
+                    <ControlNewProduct />
+                    <ControlEditProduct />
                 </div>
             </div>
         </div>

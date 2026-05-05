@@ -177,10 +177,32 @@
     height: 100px;
 }
 
+.input-group {
+    display: flex;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+}
+
+.btn-primary {
+    background: none;
+    border: 1px solid rgba(0, 0, 0, 0.575);
+    color: black;
+    border-radius: 30px;
+}
+
+.btn-primary:hover {
+    background-color: #3f3e3e;
+    border: 1px solid rgba(0, 0, 0, 0.575);
+}
+
 .form__group-input:focus,
 .form__group-select:focus,
 .form__group-textarea:focus {
     box-shadow: 0 0 12px 3px #e0aa7a;
+}
+
+.input-group .form__group-input:focus {
+    box-shadow: none;
 }
 
 

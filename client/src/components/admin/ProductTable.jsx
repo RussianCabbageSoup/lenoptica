@@ -16,11 +16,24 @@ const ProductTable = observer(() => {
     }, []);
 
     return (
-        <tbody>
-            {product.products.map(product =>
-                <ProductTableItem key={product.id} product={product} />
-            )}
-        </tbody>
+        <table className="dashboard__table">
+            <thead className="table__head">
+                <tr>
+                    <th>id</th>
+                    <th>Название</th>
+                    <th>Тип</th>
+                    <th>БрЕнд</th>
+                    <th>цЕна</th>
+                    <th>наЛИЧие</th>
+                    <th />
+                </tr>
+            </thead>
+            <tbody>
+                {product.products.map(product =>
+                    <ProductTableItem key={product.id} product={product} />
+                )}
+            </tbody>
+        </table>
     );
 })
 
