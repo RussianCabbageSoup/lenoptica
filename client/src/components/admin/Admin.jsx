@@ -34,6 +34,7 @@ function Admin() {
                         <table className="dashboard__table">
                             <thead className="table__head">
                                 <tr>
+                                    <th>id</th>
                                     <th>Название</th>
                                     <th>Тип</th>
                                     <th>БрЕнд</th>

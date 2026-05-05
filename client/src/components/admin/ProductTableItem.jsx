@@ -5,6 +5,7 @@ import deleteIco from "../../images/control/delete.svg";
 function ProductTableItem({product}) {
     return (
         <tr>
+            <td>{product.id}</td>
             <td>{product.name}</td>
             <td>Тип 1</td>
             <td>Бренд 1</td>

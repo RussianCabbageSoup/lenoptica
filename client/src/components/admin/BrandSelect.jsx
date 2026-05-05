@@ -21,6 +21,10 @@ const BrandSelect = observer(() => {
                     <BrandSelectItem key={brand.id} brand={brand} />
                 )}
             </select>
+            <div className="form__group-new">
+                <input type="text" className="form__group-input" placeholder="Новый бренд"/>
+                <button type="button">Создать</button>
+            </div>
         </div>
     );
 })

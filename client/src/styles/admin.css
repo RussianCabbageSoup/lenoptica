@@ -139,6 +139,7 @@
 }
 
 .form__group-input {
+    width: 100%;
     border: 1px solid rgba(0, 0, 0, 0.575);
     padding: 8px 18px;
     border-radius: 30px;
@@ -150,6 +151,23 @@
     padding: 8px 18px;
     border-radius: 30px;
     appearance: none;
+}
+
+.form__group-new {
+    display: flex;
+    margin-top: 10px;
+    gap: 12px;
+}
+
+.form__group-new input {
+    max-width: 300px;
+}
+
+.form__group-new button {
+    background-color: #3f3e3e;
+    color: #fff;
+    border-radius: 30px;
+    padding: 4px 10px;
 }
 
 .form__group-textarea {

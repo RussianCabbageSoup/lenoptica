@@ -1,18 +1,18 @@
 import React, { useContext } from "react";
-import emailIco from "../../images/icons/mail.svg"
-import passwordIco from "../../images/icons/key_106480.svg"
-import RegistrationModal from "./RegistrationModal";
 import { observer } from "mobx-react-lite";
 import { Context } from "../../index";
+import { useNavigate } from "react-router-dom";
 
 const LogoutModal = observer(() => {
     
     const {user} = useContext(Context);
+    const navigate = useNavigate();
 
     const handleLogout = () => {
         user.setUser({});
         user.setIsAuth(false);
         localStorage.removeItem('token');
+        navigate('/');
     };
 
     return (

@@ -6,7 +6,7 @@ function WishList() {
         <div className="profile__wishlist">
             <div className="profile__wishlist-head">
                 <div className="profile__wishlist-title">
-                    <img src={wishIco} />
+                    <img src={wishIco} alt="" />
                     <span>Избранное</span>
                 </div>
                 <div className="profile__wishlist-button">
@@ -14,9 +14,9 @@ function WishList() {
                 </div>
             </div>
             <div className="profile__wishlist-grid">
-                <ProductCard />
-                <ProductCard />
-                <ProductCard />
+                <ProductCard product={{}}/>
+                <ProductCard product={{}}/>
+                <ProductCard product={{}}/>
             </div>
         </div>
     );
