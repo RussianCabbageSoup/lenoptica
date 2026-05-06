@@ -49,7 +49,6 @@ const CarouselSlides = observer(() => {
         initSwiper()
     }, []);
 
-
     return (
         <div className="swiper Carousel">
             <div className="swiper-wrapper">

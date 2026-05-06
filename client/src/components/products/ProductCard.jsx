@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-function ProductCard({product}) {
+function ProductCard({product, brandMap}) {
     const navigate = useNavigate();
 
     const handleProductClick = (e) => {
@@ -17,7 +17,7 @@ function ProductCard({product}) {
                     <div className="card__img-tag">Хит продаж</div>
                 </div>
                 <div className="card__content">
-                    <div className="card__content-brand">RaY-bAN</div>
+                    <div className="card__content-brand">{brandMap.get(product.brandId) || product.brandId}</div>
                     <div className="card__content-model">{product.name}</div>
                     <div className="card__content-prices">
                         <div className="card__prices-current">{product.price} ₽</div>

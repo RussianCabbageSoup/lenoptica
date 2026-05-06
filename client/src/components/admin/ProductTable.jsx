@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect } from "react";
+import React, { useCallback, useContext, useEffect, useMemo } from "react";
 import { Context } from "../../index";
 import ProductTableItem from "./ProductTableItem";
 import { fetchProducts } from "../../http/productAPI";
@@ -8,12 +8,19 @@ const ProductTable = observer(() => {
 
     const { product } = useContext(Context);
 
+    const typeMap = useMemo(() => {
+        return new Map(product.types.map(t => [t.id, t.name]));
+    }, [product.types]);
+    
+    const brandMap = useMemo(() => {
+        return new Map(product.brands.map(b => [b.id, b.name]));
+    }, [product.brands]);
+
     const loadProducts = useCallback(async () => {
         try {
             const data = await fetchProducts(null, null, null, null);
             product.setProducts(data.rows);
             product.setTotalCount(data.count);
-            console.log('Товары загружены:', data.count);
         } catch (error) {
             console.error('Ошибка загрузки товаров:', error);
         }
@@ -38,7 +45,12 @@ const ProductTable = observer(() => {
             </thead>
             <tbody>
                 {product.products.map(product =>
-                    <ProductTableItem key={product.id} product={product} />
+                    <ProductTableItem 
+                        key={product.id} 
+                        product={product} 
+                        typeMap={typeMap}
+                        brandMap={brandMap}
+                    />
                 )}
             </tbody>
         </table>

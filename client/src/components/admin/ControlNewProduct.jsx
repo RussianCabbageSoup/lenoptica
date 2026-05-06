@@ -33,7 +33,6 @@ const ControlNewProduct = observer(() => {
             const data = await fetchProducts(null, null, null, null);
             product.setProducts(data.rows);
             product.setTotalCount(data.count);
-            console.log('Таблица обновлена, товаров:', data.count);
         } catch (error) {
             console.error('Ошибка обновления таблицы:', error);
         }

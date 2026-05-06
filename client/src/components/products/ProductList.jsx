@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useMemo } from "react";
 import { Context } from "../../index";
 import ProductCard from "./ProductCard";
 import { fetchProducts } from "../../http/productAPI";
@@ -23,10 +23,18 @@ const ProductList = observer(() => {
         })
     }, [product.page, product.selectedType, product.selectedBrand])
 
+    const brandMap = useMemo(() => {
+        return new Map(product.brands.map(b => [b.id, b.name]));
+    }, [product.brands]);
+
     return (
         <div className="products__grid">
             {product.products.map(product =>
-                <ProductCard key={product.id} product={product} />
+                <ProductCard
+                    key={product.id}
+                    product={product}
+                    brandMap={brandMap}
+                />
             )}
         </div>
     );
