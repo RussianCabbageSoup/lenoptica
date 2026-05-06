@@ -29,8 +29,10 @@ export const createProduct = async (product) => {
     }
 }
 
-export const fetchProducts = async () => {
-    const { data } = await $host.get('api/product')
+export const fetchProducts = async (typeId, brandId, limit = 9, page) => {
+    const { data } = await $host.get('api/product', {
+        params: {typeId, brandId, limit, page}
+    })
     return data
 }
 

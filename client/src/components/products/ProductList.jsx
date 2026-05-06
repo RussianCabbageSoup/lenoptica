@@ -8,12 +8,20 @@ const ProductList = observer(() => {
     const { product } = useContext(Context)
 
     useEffect(() => {
-        fetchProducts().then(data => {
+        fetchProducts(null, null, 6, 1).then(data => {
             product.setProducts(data.rows)
-            console.log(data.rows)
-        }
-        )
+            product.setTotalCount(data.count)
+            console.log(data.rows, ' count: ', data.count)
+        })
     }, []);
+
+    useEffect(() => {
+        fetchProducts(product.selectedType.id, product.selectedBrand.id, product.limit, product.page).then(data => {
+            product.setProducts(data.rows)
+            product.setTotalCount(data.count)
+            console.log(data.rows, ' count: ', data.count)
+        })
+    }, [product.page, product.selectedType, product.selectedBrand])
 
     return (
         <div className="products__grid">

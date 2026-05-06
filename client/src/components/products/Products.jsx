@@ -5,6 +5,7 @@ import shieldIco from "../../images/icons/shield_icon.svg";
 import ProductList from "./ProductList";
 import Pagination from "../UI/Pagination";
 import Filter from "../filter/Filter";
+import Pages from "../Pages";
 
 function Products() {
     return (
@@ -31,25 +32,26 @@ function Products() {
                         <ProductList />
                     </div>
                     <div className="products__footer">
-                        <Pagination />
+                        {/* <Pagination /> */}
+                        <Pages />
                         <ul className="products__footer-feature">
                             <li className="products__feature-item">
                                 <div className="products__feature-ico">
-                                    <img src={shieldIco} />
+                                    <img src={shieldIco} alt="" />
                                 </div>
                                 <div className="products__feature-key">Защита от UV400</div>
                                 <div className="products__feature-value">Высокий класс оптики</div>
                             </li>
                             <li className="products__feature-item">
                                 <div className="products__feature-ico">
-                                    <img src={rulerIco} />
+                                    <img src={rulerIco} alt="" />
                                 </div>
                                 <div className="products__feature-key">Индивидуальная подгонка</div>
                                 <div className="products__feature-value">Регулировка заушников</div>
                             </li>
                             <li className="products__feature-item">
                                 <div className="products__feature-ico">
-                                    <img src={diamodIco} />
+                                    <img src={diamodIco} alt="" />
                                 </div>
                                 <div className="products__feature-key">Авторский дизайн</div>
                                 <div className="products__feature-value">Лимитированные серии</div>
