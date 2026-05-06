@@ -8,27 +8,27 @@ const { where } = require('sequelize');
 class ProductController {
     async create(req, res, next) {
         try {
-            let { name, price, brandId, typeId, info } = req.body
+            let { name, price, quantity, description, brandId, typeId } = req.body
             const { img } = req.files
+
+            console.log('Полученные данные:', {
+                name,
+                price,
+                priceType: typeof price,
+                brandId,
+                typeId,
+                quantity,
+                description
+            });
+            
             let fileName = uuid.v4() + ".jpg"
             img.mv(path.resolve(__dirname, '..', 'static', fileName))
 
-            const product = await Product.create({ name, price, brandId, typeId, img: fileName });
-
-            if (info) {
-                info = JSON.parse(info)
-                info.foreach(i =>
-                    ProductInfo.create({
-                        title: i.title,
-                        description: i.description,
-                        productId: product.id
-                    })
-                )
-            }
+            const product = await Product.create({ name, price, quantity, description, brandId, typeId, img: fileName });
 
             return res.json(product)
         } catch (error) {
-            next(ApiError.badRequest(e.message))
+            next(ApiError.badRequest(error.message))
         }
     }
 

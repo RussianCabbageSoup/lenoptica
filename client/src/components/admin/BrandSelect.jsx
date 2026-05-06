@@ -7,18 +7,32 @@ import { observer } from "mobx-react-lite";
 const BrandSelect = observer(() => {
     const { product } = useContext(Context);
 
+    const [selectedBrand, setSelectedBrand] = useState('');
+
     useEffect(() => {
-        fetchBrands().then(data => product.setBrands(data));
+        fetchBrands().then(data => {
+            product.setBrands(data)
+            console.log(data)
+            if (data && data.length > 0) {
+                setSelectedBrand(data[0].id)
+                product.setSelectedBrand(data[0].id)
+                console.log(data[0].id)
+            } else {
+                setSelectedBrand('')
+                product.setSelectedBrand(null)
+            }
+        });
     }, []);
 
     const [value, setValue] = useState('');
-    const [selectedBrand, setSelectedBrand] = useState('');
+
 
     const addBrand = () => {
         if (value) {
             createBrand({ name: value }).then(newBrand => {
                 product.setBrands([...product.brands, newBrand]);
                 setSelectedBrand(newBrand.id);
+                product.setSelectedBrand(newBrand.id)
                 setValue('')
             })
         } else {
@@ -31,10 +45,14 @@ const BrandSelect = observer(() => {
             <label className="form__group-label">
                 Бренд
             </label>
-            <select 
-                className="form__group-select" 
-                value={selectedBrand} 
-                onChange={e => setSelectedBrand(e.target.value)}
+            <select
+                className="form__group-select"
+                value={selectedBrand}
+                onChange={e => {
+                    setSelectedBrand(e.target.value)
+                    console.log(e.target.value)
+                    product.setSelectedBrand(e.target.value)
+                }}
                 required
             >
                 {product.brands.map(brand =>

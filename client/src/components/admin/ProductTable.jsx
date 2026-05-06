@@ -11,9 +11,10 @@ const ProductTable = observer(() => {
     useEffect(() => {
         fetchProducts().then(data => {
             product.setProducts(data.rows)
+            console.log(data)
         }
         )
-    }, []);
+    }, [product]);
 
     return (
         <table className="dashboard__table">

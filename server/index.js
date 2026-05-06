@@ -19,8 +19,7 @@ app.use(express.static(path.resolve(__dirname, 'static')))
 app.use(fileUpload({}));
 app.use('/api', router);
 
-
-app.use(errorHandler);      // обязателтьно в конце
+app.use(errorHandler);     
 
 app.get('/', (req, res) => {
     res.status(200).json({
@@ -31,7 +30,7 @@ app.get('/', (req, res) => {
 const start = async () => {
     try {
         await sequelize.authenticate()
-        await sequelize.sync()
+        await sequelize.sync({ alter: true });
         app.listen(PORT, () => console.log(`started on ${PORT}`));
     } catch (error) {
         console.log(error);

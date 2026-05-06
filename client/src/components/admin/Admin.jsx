@@ -3,8 +3,9 @@ import searchIco from "../../images/control/magnifier.svg";
 import ProductTable from "./ProductTable";
 import ControlNewProduct from "./ControlNewProduct";
 import ControlEditProduct from "./ControlEditProduct";
+import { observer } from "mobx-react-lite";
 
-function Admin() {
+const Admin = observer(() => {
     return (
         <div className="container">
             <div className="admin">
@@ -39,6 +40,6 @@ function Admin() {
             </div>
         </div>
     );
-}
+})
 
 export default Admin;

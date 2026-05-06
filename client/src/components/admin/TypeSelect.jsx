@@ -7,19 +7,31 @@ import { observer } from "mobx-react-lite";
 const TypeSelect = observer(() => {
 
     const { product } = useContext(Context);
+    const [selectedType, setSelectedType] = useState('');
 
     useEffect(() => {
-        fetchTypes().then(data => product.setTypes(data))
+        fetchTypes().then(data => {
+            product.setTypes(data)
+            console.log(data)
+            if (data && data.length > 0) {
+                setSelectedType(data[0].id)
+                product.setSelectedType(data[0].id)
+                console.log(data[0].id)
+            } else {
+                setSelectedType('')
+                product.setSelectedType(null)
+            }
+        });
     }, []);
 
     const [value, setValue] = useState('');
-    const [selectedType, setSelectedType] = useState('');
-
+    
     const addType = () => {
         if (value) {
             createType({ name: value }).then(newType => {
                 product.setTypes([...product.types, newType]);
                 setSelectedType(newType.id);
+                product.setSelectedType(newType.id);
                 setValue('')
             })
         } else {
@@ -32,14 +44,20 @@ const TypeSelect = observer(() => {
             <label className="form__group-label">
                 Тип
             </label>
-            <select 
-                className="form__group-select" 
-                value={selectedType} 
-                onChange={e => setSelectedType(e.target.value)}
+            <select
+                className="form__group-select"
+                value={selectedType}
+                onChange={e => {
+                    setSelectedType(e.target.value)
+                    product.setSelectedType(e.target.value)
+                }}
                 required
             >
                 {product.types.map(type =>
-                    <TypeSelectItem key={type.id} type={type} />
+                    <TypeSelectItem
+                        key={type.id}
+                        type={type}
+                    />
                 )}
             </select>
             <div className="form__group-new">

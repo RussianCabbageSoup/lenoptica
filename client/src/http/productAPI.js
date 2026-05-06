@@ -21,8 +21,12 @@ export const fetchBrands = async () => {
 }
 
 export const createProduct = async (product) => {
-    const { data } = await $authHost.post('api/product', product)
-    return data
+    try {
+        const { data } = await $authHost.post('api/product', product)
+        return data
+    } catch (error) {
+        console.log('catch: ', error)
+    }
 }
 
 export const fetchProducts = async () => {
