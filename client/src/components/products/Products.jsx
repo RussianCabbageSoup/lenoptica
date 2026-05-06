@@ -3,7 +3,6 @@ import diamodIco from "../../images/icons/diamond_.svg";
 import rulerIco from "../../images/icons/ruler.svg";
 import shieldIco from "../../images/icons/shield_icon.svg";
 import ProductList from "./ProductList";
-import Pagination from "../UI/Pagination";
 import Filter from "../filter/Filter";
 import Pages from "../Pages";
 
@@ -32,7 +31,6 @@ function Products() {
                         <ProductList />
                     </div>
                     <div className="products__footer">
-                        {/* <Pagination /> */}
                         <Pages />
                         <ul className="products__footer-feature">
                             <li className="products__feature-item">

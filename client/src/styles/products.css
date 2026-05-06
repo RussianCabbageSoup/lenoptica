@@ -271,6 +271,21 @@
     color: #b89f88;
 }
 
+.pagination {
+    display: flex;
+    gap: 8px;
+}
+
+.page-link {
+    border: none;
+    color: inherit;
+    background: none;
+}
+
+.active>.page-link, .page-link.active {
+    background-color: #b89f88;
+}
+
 .products__footer-feature {
     display: flex;
     gap: 100px;

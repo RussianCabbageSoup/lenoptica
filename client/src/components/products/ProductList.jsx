@@ -8,20 +8,22 @@ const ProductList = observer(() => {
     const { product } = useContext(Context)
 
     useEffect(() => {
-        fetchProducts(null, null, 6, 1).then(data => {
+
+        const PAGE_LIMIT = 4
+
+        fetchProducts(null, null, PAGE_LIMIT, 1).then(data => {
             product.setProducts(data.rows)
             product.setTotalCount(data.count)
-            console.log(data.rows, ' count: ', data.count)
         })
+        product.setLimit(PAGE_LIMIT)
     }, []);
 
     useEffect(() => {
         fetchProducts(product.selectedType.id, product.selectedBrand.id, product.limit, product.page).then(data => {
             product.setProducts(data.rows)
             product.setTotalCount(data.count)
-            console.log(data.rows, ' count: ', data.count)
         })
-    }, [product.page, product.selectedType, product.selectedBrand])
+    }, [product.selectedType.id, product.selectedBrand.id, product.limit, product.page])
 
     const brandMap = useMemo(() => {
         return new Map(product.brands.map(b => [b.id, b.name]));

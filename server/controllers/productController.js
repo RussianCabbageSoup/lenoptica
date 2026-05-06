@@ -49,7 +49,7 @@ class ProductController {
                 products = await Product.findAndCountAll({ where: { brandId, typeId } });
             }
         } else {
-            limit = parseInt(limit) || 9;
+            limit = parseInt(limit) || 6;
             page = parseInt(page) || 1;
             let offset = page * limit - limit;
             
