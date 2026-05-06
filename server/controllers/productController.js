@@ -2,8 +2,6 @@ const { Product, ProductInfo } = require('../models/models');
 const uuid = require('uuid');
 const path = require('path');
 const ApiError = require('../error/ApiError');
-const { title } = require('process');
-const { where } = require('sequelize');
 
 class ProductController {
     async create(req, res, next) {
@@ -33,32 +31,51 @@ class ProductController {
     }
 
     async getAll(req, res) {
-        let {brandId, typeId, limit, page} = req.query
-        limit = limit || 9
-        page = page || 1
-        let offset = page * limit - limit
+        let { brandId, typeId, limit, page } = req.query
+        
         let products;
-        if (!brandId && !typeId) {
-            products = await Product.findAndCountAll({limit, offset})
+        
+        if (!limit || limit === 'null' || limit === 'undefined') {
+            if (!brandId && !typeId) {
+                products = await Product.findAndCountAll();
+            }
+            if (brandId && !typeId) {
+                products = await Product.findAndCountAll({ where: { brandId } });
+            }
+            if (!brandId && typeId) {
+                products = await Product.findAndCountAll({ where: { typeId } });
+            }
+            if (brandId && typeId) {
+                products = await Product.findAndCountAll({ where: { brandId, typeId } });
+            }
+        } else {
+            limit = parseInt(limit) || 9;
+            page = parseInt(page) || 1;
+            let offset = page * limit - limit;
+            
+            if (!brandId && !typeId) {
+                products = await Product.findAndCountAll({ limit, offset });
+            }
+            if (brandId && !typeId) {
+                products = await Product.findAndCountAll({ where: { brandId }, limit, offset });
+            }
+            if (!brandId && typeId) {
+                products = await Product.findAndCountAll({ where: { typeId }, limit, offset });
+            }
+            if (brandId && typeId) {
+                products = await Product.findAndCountAll({ where: { brandId, typeId }, limit, offset });
+            }
         }
-        if (brandId && !typeId) {
-            products = await Product.findAndCountAll({where: {brandId}, limit, offset})
-        }
-        if (!brandId && typeId) {
-            products = await Product.findAndCountAll({where: {typeId}, limit, offset})
-        }
-        if (brandId && typeId) {
-            products = await Product.findAndCountAll({where: {brandId, typeId}, limit, offset})
-        }
+        
         return res.json(products);
     }
 
     async getOne(req, res) {
-        const {id} = req.params
+        const { id } = req.params
         const product = await Product.findOne(
             {
-                where: {id},
-                include: [{model: ProductInfo, as: 'info'}]
+                where: { id },
+                include: [{ model: ProductInfo, as: 'info' }]
             },
         )
         return res.json(product)

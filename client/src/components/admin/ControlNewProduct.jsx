@@ -1,17 +1,22 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useRef, useState, useCallback } from "react";
 import plusIco from "../../images/icons/1486395885-plus_80605.svg";
 import BrandSelect from "./BrandSelect";
 import TypeSelect from "./TypeSelect";
-import { createProduct } from "../../http/productAPI";
+import { createProduct, fetchProducts } from "../../http/productAPI";
 import { Context } from "../../index";
+import { observer } from "mobx-react-lite";
 
-function ControlNewProduct() {
+const ControlNewProduct = observer(() => {
 
-    const {product} = useContext(Context)
+    const { product } = useContext(Context)
 
     const [fileName, setFileName] = useState("");
     const [file, setFile] = useState(null);
     const fileInputRef = useRef(null);                          
+    const [name, setName] = useState('');
+    const [price, setPrice] = useState(0);
+    const [quantity, setQuantity] = useState(0);
+    const [description, setDescription] = useState('');
 
     const handleFileChange = (e) => {
         const Tfile = e.target.files[0];
@@ -23,27 +28,45 @@ function ControlNewProduct() {
         fileInputRef.current.click();
     };
 
-    const [name, setName] = useState('');
-    const [price, setPrice] = useState(0);
-    const [quantity, setQuantity] = useState(0);
-    const [description, setDescription] = useState('');
+    const refreshProducts = useCallback(async () => {
+        try {
+            const data = await fetchProducts(null, null, null, null);
+            product.setProducts(data.rows);
+            product.setTotalCount(data.count);
+            console.log('Таблица обновлена, товаров:', data.count);
+        } catch (error) {
+            console.error('Ошибка обновления таблицы:', error);
+        }
+    }, [product]);
 
-    const addProduct = (e) => {
+    const addProduct = async (e) => {
         e.preventDefault();
+                
+        try {
+            const formData = new FormData()
+            formData.append('name', name);
+            formData.append('price', price);
+            formData.append('quantity', quantity);
+            formData.append('description', description);
+            formData.append('brandId', product.selectedBrand);
+            formData.append('typeId', product.selectedType);
+            formData.append('img', file);
 
-        const formData = new FormData()
-
-        formData.append('name', name);
-        formData.append('price', price);
-        formData.append('quantity', quantity);
-        formData.append('description', description);
-        formData.append('brandId', product.selectedBrand);
-        formData.append('typeId', product.selectedType);
-        formData.append('img', file);
-
-        createProduct(formData).then(data => {
-            console.log(data)
-        })
+            const data = await createProduct(formData);
+            console.log('Товар добавлен:', data);
+            
+            setName('');
+            setPrice(0);
+            setQuantity(0);
+            setDescription('');
+            setFile(null);
+            setFileName('');
+            
+            await refreshProducts();
+            
+        } catch (error) {
+            console.error('Ошибка при добавлении товара:', error);
+        }
     }
 
     return (
@@ -52,7 +75,7 @@ function ControlNewProduct() {
                 <img src={plusIco} alt="" />
                 <h2>Новый товар</h2>
             </div>
-            <form className="control__form" onSubmit={e => addProduct(e)}>
+            <form className="control__form" onSubmit={addProduct}>
                 <div className="form__group">
                     <label className="form__group-label">
                         Название товара
@@ -105,7 +128,6 @@ function ControlNewProduct() {
                     <textarea
                         className="form__group-textarea"
                         placeholder="Описание товара"
-                        defaultValue={""}
                         value={description}
                         onChange={e => setDescription(e.target.value)}
                     />
@@ -137,10 +159,12 @@ function ControlNewProduct() {
                         />
                     </div>
                 </div>
-                <button type="submit" className="form__button button">Сохранить</button>
+                <button type="submit" className="form__button button">
+                    Сохранить
+                </button>
             </form>
         </div>
     );
-}
+})
 
 export default ControlNewProduct;

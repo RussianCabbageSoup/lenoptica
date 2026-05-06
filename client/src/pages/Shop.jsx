@@ -3,8 +3,9 @@ import Hero from "../components/Hero";
 import Products from "../components/products/Products";
 import Header from "../components/header/Header";
 import Footer from "../components/Footer";
+import { observer } from "mobx-react-lite";
 
-function Store() {
+const Shop = observer(() => {
     return (  
         <div>
             <Header />
@@ -13,6 +14,6 @@ function Store() {
             <Footer />
         </div>
     );
-}
+})
 
-export default Store;
+export default Shop;

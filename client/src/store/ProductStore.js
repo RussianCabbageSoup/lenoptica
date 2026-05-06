@@ -14,7 +14,7 @@ export default class ProductStore {
         this._page = 1
         this._totalCount = 0
         this._limit = 6
-
+        
         makeAutoObservable(this)
     }
 
@@ -49,9 +49,12 @@ export default class ProductStore {
     }
 
     setLimit(limit) {
-        this._limitlimit = limit
+        this._limit = limit
     }
 
+    setRefresh(bool) {
+        this._refresh = bool
+    }
 
     get types() {
         return this._types

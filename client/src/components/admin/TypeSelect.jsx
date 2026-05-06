@@ -12,11 +12,9 @@ const TypeSelect = observer(() => {
     useEffect(() => {
         fetchTypes().then(data => {
             product.setTypes(data)
-            console.log(data)
             if (data && data.length > 0) {
                 setSelectedType(data[0].id)
                 product.setSelectedType(data[0].id)
-                console.log(data[0].id)
             } else {
                 setSelectedType('')
                 product.setSelectedType(null)

@@ -12,11 +12,9 @@ const BrandSelect = observer(() => {
     useEffect(() => {
         fetchBrands().then(data => {
             product.setBrands(data)
-            console.log(data)
             if (data && data.length > 0) {
                 setSelectedBrand(data[0].id)
                 product.setSelectedBrand(data[0].id)
-                console.log(data[0].id)
             } else {
                 setSelectedBrand('')
                 product.setSelectedBrand(null)
@@ -50,7 +48,6 @@ const BrandSelect = observer(() => {
                 value={selectedBrand}
                 onChange={e => {
                     setSelectedBrand(e.target.value)
-                    console.log(e.target.value)
                     product.setSelectedBrand(e.target.value)
                 }}
                 required

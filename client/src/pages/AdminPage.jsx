@@ -2,8 +2,9 @@ import React from "react";
 import Admin from "../components/admin/Admin";
 import Header from "../components/header/Header";
 import Footer from "../components/Footer";
+import { observer } from "mobx-react-lite";
 
-function AdminPage() {
+const AdminPage = observer(() => {
     return (  
         <div>
             <Header />
@@ -11,6 +12,6 @@ function AdminPage() {
             <Footer />
         </div>
     );
-}
+})
 
 export default AdminPage;
