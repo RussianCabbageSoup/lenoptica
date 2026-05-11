@@ -22,7 +22,10 @@ const TypeFilter = observer(() => {
             </div>
             <ul className="filter__type-list">
                 {product.types.map(type => 
-                    <TypeFilterItem key={type.id} type={type.name} />
+                    <TypeFilterItem 
+                        key={type.id} 
+                        type={type} 
+                    />
                 )}
             </ul>
         </div>

@@ -9,7 +9,7 @@ const ProductList = observer(() => {
 
     useEffect(() => {
 
-        const PAGE_LIMIT = 4
+        const PAGE_LIMIT = 6
 
         fetchProducts(null, null, PAGE_LIMIT, 1).then(data => {
             product.setProducts(data.rows)

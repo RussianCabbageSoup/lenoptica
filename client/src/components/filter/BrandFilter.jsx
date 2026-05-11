@@ -6,6 +6,7 @@ import { fetchBrands } from "../../http/productAPI";
 import { observer } from "mobx-react-lite";
 
 const BrandFilter = observer(() => {
+
     const {product} = useContext(Context);
 
     useEffect(() => {
@@ -24,7 +25,7 @@ const BrandFilter = observer(() => {
                 {product.brands.map(brand => 
                     <BrandFilterItem
                         key={brand.id} 
-                        brand={brand.name}
+                        brand={brand}
                     />
                 )}
             </ul>

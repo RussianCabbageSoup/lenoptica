@@ -11,6 +11,8 @@ export default class ProductStore {
         this._selectedBrand = {}
         this._selectedType = {}
 
+        this._fitler = {}
+
         this._page = 1
         this._totalCount = 0
         this._limit = 6
@@ -56,6 +58,10 @@ export default class ProductStore {
         this._refresh = bool
     }
 
+    setFilter(filter) {
+        this._fitler = filter
+    }
+
     get types() {
         return this._types
     }
@@ -86,5 +92,9 @@ export default class ProductStore {
 
     get limit() {
         return this._limit
+    }
+
+    get filter() {
+        return this._fitler
     }
 }
