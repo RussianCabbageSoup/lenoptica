@@ -358,13 +358,16 @@
 
 @media (max-width: 750px) {
     .card__img-box img {
-        width: 100%;
-        height: 150px;
+        height: 100%;
         object-fit: cover;
     }
 
     .products__grid-card {
-        height: 300px;
+        height: fit-content;
+    }
+
+    .products__grid {
+        grid-template-columns: repeat(1, 1fr);
     }
 
     .card__content-model {

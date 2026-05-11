@@ -2,6 +2,7 @@ const { Product, ProductInfo } = require('../models/models');
 const uuid = require('uuid');
 const path = require('path');
 const ApiError = require('../error/ApiError');
+const { Op } = require('sequelize');
 
 class ProductController {
     async create(req, res, next) {
@@ -18,7 +19,7 @@ class ProductController {
                 quantity,
                 description
             });
-            
+
             let fileName = uuid.v4() + ".jpg"
             img.mv(path.resolve(__dirname, '..', 'static', fileName))
 
@@ -31,43 +32,48 @@ class ProductController {
     }
 
     async getAll(req, res) {
-        let { brandId, typeId, limit, page } = req.query
-        
-        let products;
-        
-        if (!limit || limit === 'null' || limit === 'undefined') {
-            if (!brandId && !typeId) {
-                products = await Product.findAndCountAll();
+        try {
+            let { brandId, typeId, limit, page, minPrice, maxPrice } = req.query
+
+            let whereCondition = {};
+
+            if (brandId && brandId !== 'null' && brandId !== 'undefined') {
+                whereCondition.brandId = brandId;
             }
-            if (brandId && !typeId) {
-                products = await Product.findAndCountAll({ where: { brandId } });
+            if (typeId && typeId !== 'null' && typeId !== 'undefined') {
+                whereCondition.typeId = typeId;
             }
-            if (!brandId && typeId) {
-                products = await Product.findAndCountAll({ where: { typeId } });
+
+            const hasPriceFilter = (minPrice && minPrice !== 'null' && minPrice !== 'undefined') ||
+                (maxPrice && maxPrice !== 'null' && maxPrice !== 'undefined');
+
+            if (hasPriceFilter) {
+                whereCondition.price = {};
+                if (minPrice && !isNaN(parseFloat(minPrice))) {
+                    whereCondition.price[Op.gte] = parseFloat(minPrice);
+                }
+                if (maxPrice && !isNaN(parseFloat(maxPrice))) {
+                    whereCondition.price[Op.lte] = parseFloat(maxPrice);
+                }
             }
-            if (brandId && typeId) {
-                products = await Product.findAndCountAll({ where: { brandId, typeId } });
+
+            const isValidLimit = limit && limit !== 'null' && limit !== 'undefined';
+            let queryOptions = { where: whereCondition };
+
+            if (isValidLimit) {
+                limit = parseInt(limit) || 6;
+                page = parseInt(page) || 1;
+                const offset = page * limit - limit;
+                queryOptions.limit = limit;
+                queryOptions.offset = offset;
             }
-        } else {
-            limit = parseInt(limit) || 6;
-            page = parseInt(page) || 1;
-            let offset = page * limit - limit;
-            
-            if (!brandId && !typeId) {
-                products = await Product.findAndCountAll({ limit, offset });
-            }
-            if (brandId && !typeId) {
-                products = await Product.findAndCountAll({ where: { brandId }, limit, offset });
-            }
-            if (!brandId && typeId) {
-                products = await Product.findAndCountAll({ where: { typeId }, limit, offset });
-            }
-            if (brandId && typeId) {
-                products = await Product.findAndCountAll({ where: { brandId, typeId }, limit, offset });
-            }
+
+            const products = await Product.findAndCountAll(queryOptions);
+            return res.json(products);
+
+        } catch (error) {
+            next(ApiError.badRequest(error.message))
         }
-        
-        return res.json(products);
     }
 
     async getOne(req, res) {

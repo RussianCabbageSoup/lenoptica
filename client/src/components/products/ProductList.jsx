@@ -19,11 +19,18 @@ const ProductList = observer(() => {
     }, []);
 
     useEffect(() => {
-        fetchProducts(product.selectedType.id, product.selectedBrand.id, product.limit, product.page).then(data => {
+        fetchProducts(product.selectedType.id, product.selectedBrand.id, product.limit, product.page, product.minPrice, product.maxPrice).then(data => {
             product.setProducts(data.rows)
             product.setTotalCount(data.count)
         })
-    }, [product.selectedType.id, product.selectedBrand.id, product.limit, product.page])
+    }, [
+        product.selectedType.id, 
+        product.selectedBrand.id, 
+        product.limit, 
+        product.page,  
+        product.minPrice, 
+        product.maxPrice
+    ])
 
     const brandMap = useMemo(() => {
         return new Map(product.brands.map(b => [b.id, b.name]));

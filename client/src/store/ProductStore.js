@@ -11,7 +11,8 @@ export default class ProductStore {
         this._selectedBrand = {}
         this._selectedType = {}
 
-        this._fitler = {}
+        this._minPrice = ''
+        this._maxPrice = ''
 
         this._page = 1
         this._totalCount = 0
@@ -58,8 +59,12 @@ export default class ProductStore {
         this._refresh = bool
     }
 
-    setFilter(filter) {
-        this._fitler = filter
+    setMinPrice(min) {
+        this._minPrice = min
+    }
+
+    setMaxPrice(max) {
+        this._maxPrice = max
     }
 
     get types() {
@@ -94,7 +99,11 @@ export default class ProductStore {
         return this._limit
     }
 
-    get filter() {
-        return this._fitler
+    get minPrice() {
+        return this._minPrice
+    }
+    
+    get maxPrice() {
+        return this._maxPrice
     }
 }
