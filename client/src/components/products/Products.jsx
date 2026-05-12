@@ -5,12 +5,9 @@ import shieldIco from "../../images/icons/shield_icon.svg";
 import ProductList from "./ProductList";
 import Filter from "../filter/Filter";
 import Pages from "../Pages";
-import { Context } from "../../index";
 import { observer } from "mobx-react-lite";
 
 const Products = observer(() => {
-
-    const {product} = useContext(Context)
 
     return (
         <section className="products">
@@ -30,15 +27,6 @@ const Products = observer(() => {
                             Коллекция премиальных оправ и линз с защитой от синего
                             света
                         </div>
-                        {product.search
-                        ?
-                        <div className="products__head-subtitle">
-                            Поиск по ключевому слову: <span>{product.search}</span>
-                        </div>
-                        :
-                        <div ></div>
-                        }
-                        
                     </div>
                     <div className="product__body">
                         <Filter />

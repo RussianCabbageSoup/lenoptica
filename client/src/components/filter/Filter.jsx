@@ -15,6 +15,7 @@ const Filter = observer(() => {
         product.setSelectedType({});
         product.setMinPrice('');
         product.setMaxPrice('');
+        product.setSearch('');
     }
 
     return (
@@ -23,6 +24,7 @@ const Filter = observer(() => {
                 <BrandFilter />
                 <TypeFilter />
                 <CostFilter />
+                <div className="mb-3">Ключевое слово: <span>{product.search}</span></div>
                 <div className="filter__button">
                     <div className="filter__button-btn button" onClick={filter}>Сбросить</div>
                 </div>

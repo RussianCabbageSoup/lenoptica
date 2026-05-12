@@ -20,15 +20,19 @@ const ProductList = observer(() => {
 
     useEffect(() => {
         fetchProducts(product.selectedType.id, product.selectedBrand.id, product.limit, product.page, product.minPrice, product.maxPrice, product.search).then(data => {
-            product.setProducts(data.rows)
-            product.setTotalCount(data.count)
+            try {
+                product.setProducts(data.rows)
+                product.setTotalCount(data.count)
+            } catch (error) {
+                console.log(error)
+            }
         })
     }, [
-        product.selectedType.id, 
-        product.selectedBrand.id, 
-        product.limit, 
-        product.page,  
-        product.minPrice, 
+        product.selectedType.id,
+        product.selectedBrand.id,
+        product.limit,
+        product.page,
+        product.minPrice,
         product.maxPrice,
         product.search
     ])

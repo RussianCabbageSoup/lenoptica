@@ -1,20 +1,26 @@
 import React, { useContext, useState } from "react";
 import searchIco from "../images/control/magnifier.svg";
 import { Context } from "../index";
+import { useNavigate } from "react-router-dom";
 
 function SearchField() {
 
     const { product } = useContext(Context)
 
+    const navigate = useNavigate('');
+
     const [query, setQuery] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        
         if (query.trim()) {
             product.setSearch(query.trim());
         } else {
             product.setSearch(''); 
         }
+
+        navigate('/products')
     }
 
     return (

@@ -1,4 +1,4 @@
-const { Product, ProductInfo } = require('../models/models');
+const { Product, ProductInfo, Brand, Type } = require('../models/models');
 const uuid = require('uuid');
 const path = require('path');
 const ApiError = require('../error/ApiError');
@@ -31,21 +31,16 @@ class ProductController {
         }
     }
 
-    async getAll(req, res) {
+    async getAll(req, res, next) {
         try {
             let { brandId, typeId, limit, page, minPrice, maxPrice, search } = req.query
 
             let whereCondition = {};
 
-            if (search && search !== 'null' && search !== 'undefined' && search.trim()) {
-                whereCondition.name = {
-                    [Op.iLike]: `%${search.trim()}%`
-                }
-            }
-
             if (brandId && brandId !== 'null' && brandId !== 'undefined') {
                 whereCondition.brandId = brandId;
             }
+
             if (typeId && typeId !== 'null' && typeId !== 'undefined') {
                 whereCondition.typeId = typeId;
             }
@@ -63,8 +58,35 @@ class ProductController {
                 }
             }
 
+            if (search && search !== 'null' && search !== 'undefined' && search.trim()) {
+                whereCondition = {
+                    ...whereCondition,
+                    [Op.or]: [
+                        { name: { [Op.iLike]: `%${search.trim()}%` } },
+                        { '$type.name$': { [Op.iLike]: `%${search.trim()}%` } },
+                        { '$brand.name$': { [Op.iLike]: `%${search.trim()}%` } }
+                    ]
+                };
+            }
+
             const isValidLimit = limit && limit !== 'null' && limit !== 'undefined';
-            let queryOptions = { where: whereCondition };
+            let queryOptions = {
+                where: whereCondition,
+                include: [
+                    {
+                        model: Type,
+                        as: 'type', 
+                        attributes: ['id', 'name'] 
+                    },
+                    {
+                        model: Brand,
+                        as: 'brand', 
+                        attributes: ['id', 'name'] 
+                    }
+                ],
+                distinct: true, 
+                subQuery: false 
+            };
 
             if (isValidLimit) {
                 limit = parseInt(limit) || 6;
