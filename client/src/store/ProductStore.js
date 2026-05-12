@@ -17,6 +17,8 @@ export default class ProductStore {
         this._page = 1
         this._totalCount = 0
         this._limit = 6
+
+        this._search = ''
         
         makeAutoObservable(this)
     }
@@ -67,6 +69,10 @@ export default class ProductStore {
         this._maxPrice = max
     }
 
+    setSearch(query) {
+        this._search = query
+    }
+
     get types() {
         return this._types
     }
@@ -105,5 +111,9 @@ export default class ProductStore {
     
     get maxPrice() {
         return this._maxPrice
+    }
+
+    get search() {
+        return this._search
     }
 }

@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import diamodIco from "../../images/icons/diamond_.svg";
 import rulerIco from "../../images/icons/ruler.svg";
 import shieldIco from "../../images/icons/shield_icon.svg";
 import ProductList from "./ProductList";
 import Filter from "../filter/Filter";
 import Pages from "../Pages";
+import { Context } from "../../index";
+import { observer } from "mobx-react-lite";
 
-function Products() {
+const Products = observer(() => {
+
+    const {product} = useContext(Context)
+
     return (
         <section className="products">
             <div className="container">
@@ -25,6 +30,15 @@ function Products() {
                             Коллекция премиальных оправ и линз с защитой от синего
                             света
                         </div>
+                        {product.search
+                        ?
+                        <div className="products__head-subtitle">
+                            Поиск по ключевому слову: <span>{product.search}</span>
+                        </div>
+                        :
+                        <div ></div>
+                        }
+                        
                     </div>
                     <div className="product__body">
                         <Filter />
@@ -61,6 +75,6 @@ function Products() {
         </section>
 
     );
-}
+})
 
 export default Products;

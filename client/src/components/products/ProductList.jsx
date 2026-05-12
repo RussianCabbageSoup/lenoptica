@@ -19,7 +19,7 @@ const ProductList = observer(() => {
     }, []);
 
     useEffect(() => {
-        fetchProducts(product.selectedType.id, product.selectedBrand.id, product.limit, product.page, product.minPrice, product.maxPrice).then(data => {
+        fetchProducts(product.selectedType.id, product.selectedBrand.id, product.limit, product.page, product.minPrice, product.maxPrice, product.search).then(data => {
             product.setProducts(data.rows)
             product.setTotalCount(data.count)
         })
@@ -29,7 +29,8 @@ const ProductList = observer(() => {
         product.limit, 
         product.page,  
         product.minPrice, 
-        product.maxPrice
+        product.maxPrice,
+        product.search
     ])
 
     const brandMap = useMemo(() => {

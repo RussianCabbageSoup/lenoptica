@@ -33,9 +33,15 @@ class ProductController {
 
     async getAll(req, res) {
         try {
-            let { brandId, typeId, limit, page, minPrice, maxPrice } = req.query
+            let { brandId, typeId, limit, page, minPrice, maxPrice, search } = req.query
 
             let whereCondition = {};
+
+            if (search && search !== 'null' && search !== 'undefined' && search.trim()) {
+                whereCondition.name = {
+                    [Op.iLike]: `%${search.trim()}%`
+                }
+            }
 
             if (brandId && brandId !== 'null' && brandId !== 'undefined') {
                 whereCondition.brandId = brandId;

@@ -3,14 +3,13 @@ import { Link, NavLink } from "react-router-dom";
 import myLogo from "../../images/logo/logo.svg";
 import heartIco from "../../images/control/heart.svg";
 import cartIco from "../../images/control/shoppingbag_84031.svg";
-import searchIco from "../../images/control/magnifier.svg";
 import userIco from "../../images/control/user.svg";
 import logoutIco from "../../images/control/logout_icon_138409.svg";
 import promotionIco from "../../images/icons/promotion.svg";
-import HeaderBurger from "./HeaderBurger";
 import ModalList from "../modals/ModalList";
 import { Context } from "../../index";
 import { observer } from "mobx-react-lite";
+import SearchField from "../SearchField";
 
 const HeaderDesktop = observer(() => {
     const { user } = useContext(Context);
@@ -34,12 +33,7 @@ const HeaderDesktop = observer(() => {
                     </div>
                 </Link>
                 <div className="header__top-search">
-                    <form className="header__search-form">
-                        <input className="header__form-input" type="text" placeholder="Поиск товаров, брендов или категорий..." />
-                        <button className="header__form-btn" type="submit">
-                            <img src={searchIco} alt="поиск" />
-                        </button>
-                    </form>
+                    <SearchField />
                 </div>
                 <div>
                     {isAuth ?
