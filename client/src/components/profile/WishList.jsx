@@ -14,9 +14,8 @@ function WishList() {
                 </div>
             </div>
             <div className="profile__wishlist-grid">
-                <ProductCard product={{}}/>
-                <ProductCard product={{}}/>
-                <ProductCard product={{}}/>
+                {/* <ProductCard product={{}} brandMap={{}}/> */}
+                
             </div>
         </div>
     );

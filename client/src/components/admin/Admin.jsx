@@ -4,11 +4,12 @@ import ProductTable from "./ProductTable";
 import ControlNewProduct from "./ControlNewProduct";
 import ControlEditProduct from "./ControlEditProduct";
 import { observer } from "mobx-react-lite";
+import SearchAdmin from "./SearchAdmin";
 
 const Admin = observer(() => {
     return (
-        <div className="container">
-            <div className="admin">
+        <div className="admin">
+            <div className="container">
                 <div className="admin__dashboard">
                     <h2 className="dashboard__title title">Панель администратора</h2>
                     <div className="dashboard__buttons">
@@ -17,10 +18,7 @@ const Admin = observer(() => {
                     </div>
                     <div className="dashboard__list-header">
                         <h3>Список товаров</h3>
-                        <form className="list__header-search">
-                            <img src={searchIco} alt=""/>
-                            <input type="text" placeholder="Поиск по названию, типу, бренду" />
-                        </form>
+                        <SearchAdmin />
                     </div>
                     <div className="dashboard__list-header" style={{ opacity: '0.3' }}>
                         <h3>Список пользователей</h3>

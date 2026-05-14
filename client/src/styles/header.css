@@ -4,11 +4,14 @@
 
 .header {
     box-shadow: 0 10px 35px 12px rgba(27, 6, 6, 0.185);
+    position: fixed;
+    background: #fff;
+    z-index: 9999;
+    width: 100%;
 }
 
 .header__inner {
-    padding: 30px 0 15px 0;
-    margin-bottom: 100px;
+    padding: 10px 0 0 0;
 }
 
 .header__top {
@@ -16,7 +19,7 @@
     justify-content: space-between;
     gap: 30px;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 13px;
 }
 
 .header__top-logo {
@@ -24,10 +27,8 @@
     align-items: center;
     gap: 20px;
     line-height: 1;
-    border: 1px solid #e0aa7a;
     border-radius: 20px;
-    padding: 15px;
-    box-shadow: 0 0 12px 0 #e0aa7a;
+    padding: 8px;
 }
 
 .header__logo-img img {

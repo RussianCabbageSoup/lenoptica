@@ -3,7 +3,7 @@
     border-radius: 30px;
     overflow: hidden;
     margin-bottom: 100px;
-    box-shadow: 3px 10px 25px 12px rgba(0, 0, 0, 0.205);
+    padding-top: 190px;
 }
 
 .hero__content {

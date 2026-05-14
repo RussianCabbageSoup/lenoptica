@@ -4,7 +4,7 @@ import { Context } from "../../index";
 import { createBrand, fetchBrands } from "../../http/productAPI";
 import { observer } from "mobx-react-lite";
 
-const BrandSelect = observer(() => {
+const BrandSelect = observer(({ selected }) => {
     const { product } = useContext(Context);
 
     const [selectedBrand, setSelectedBrand] = useState('');
@@ -12,15 +12,25 @@ const BrandSelect = observer(() => {
     useEffect(() => {
         fetchBrands().then(data => {
             product.setBrands(data)
-            if (data && data.length > 0) {
-                setSelectedBrand(data[0].id)
-                product.setSelectedBrand(data[0].id)
+
+            let defaultBrandId = null;
+
+            if (selected) {
+                defaultBrandId = selected;
+            }
+            else if (data && data.length > 0) {
+                defaultBrandId = data[0].id;
+            }
+
+            if (defaultBrandId) {
+                setSelectedBrand(defaultBrandId);
+                product.setSelectedBrand(defaultBrandId);
             } else {
-                setSelectedBrand('')
-                product.setSelectedBrand(null)
+                setSelectedBrand('');
+                product.setSelectedBrand(null);
             }
         });
-    }, []);
+    }, [selected]);
 
     const [value, setValue] = useState('');
 

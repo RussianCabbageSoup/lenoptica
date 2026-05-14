@@ -115,6 +115,7 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     margin-bottom: 50px;
+    width: 100%;
 }
 
 .products__grid-card {

@@ -4,7 +4,7 @@ import TypeSelectItem from "./TypeSelectItem";
 import { createType, fetchTypes } from "../../http/productAPI";
 import { observer } from "mobx-react-lite";
 
-const TypeSelect = observer(() => {
+const TypeSelect = observer(({ selected }) => {
 
     const { product } = useContext(Context);
     const [selectedType, setSelectedType] = useState('');
@@ -12,18 +12,28 @@ const TypeSelect = observer(() => {
     useEffect(() => {
         fetchTypes().then(data => {
             product.setTypes(data)
-            if (data && data.length > 0) {
-                setSelectedType(data[0].id)
-                product.setSelectedType(data[0].id)
+
+            let defaultTypeId = null;
+
+            if (selected) {
+                defaultTypeId = selected;
+            }
+            else if (data && data.length > 0) {
+                defaultTypeId = data[0].id;
+            }
+
+            if (defaultTypeId) {
+                setSelectedType(defaultTypeId);
+                product.setSelectedType(defaultTypeId);
             } else {
-                setSelectedType('')
-                product.setSelectedType(null)
+                setSelectedType('');
+                product.setSelectedType(null);
             }
         });
-    }, []);
+    }, [selected]);
 
     const [value, setValue] = useState('');
-    
+
     const addType = () => {
         if (value) {
             createType({ name: value }).then(newType => {

@@ -10,6 +10,7 @@ export default class ProductStore {
 
         this._selectedBrand = {}
         this._selectedType = {}
+        this._selectedProduct = {}
 
         this._minPrice = ''
         this._maxPrice = ''
@@ -19,6 +20,8 @@ export default class ProductStore {
         this._limit = 6
 
         this._search = ''
+
+        this._tableSearch = ''
         
         makeAutoObservable(this)
     }
@@ -73,6 +76,14 @@ export default class ProductStore {
         this._search = query
     }
 
+    setTableSearch(query) {
+        this._tableSearch = query
+    }
+
+    setSelectedProduct(product) {
+        this._selectedProduct = product
+    }
+
     get types() {
         return this._types
     }
@@ -115,5 +126,13 @@ export default class ProductStore {
 
     get search() {
         return this._search
+    }
+
+    get tableSearch() {
+        return this._tableSearch
+    }
+
+    get selectedProduct() {
+        return this._selectedProduct
     }
 }

@@ -1,6 +1,7 @@
 .admin {
     display: flex;
     flex-direction: column;
+    padding-top: 150px;
 }
 
 .admin__dashboard {
@@ -87,6 +88,7 @@
     width: 23px;
     display: inline;
     margin: 5px;
+    cursor: pointer;
 }
 
 .table__head th {
@@ -212,7 +214,6 @@
     padding: 20px;
     border-radius: 20px;
     box-shadow: 0 10px 20px 10px rgba(0, 0, 0, 0.281);
-    opacity: 0.5;
 }
 
 @media (max-width: 750px) {

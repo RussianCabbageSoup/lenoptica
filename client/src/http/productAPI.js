@@ -29,6 +29,15 @@ export const createProduct = async (product) => {
     }
 }
 
+export const updateProduct = async (product, id) => {
+    try {
+        const { data } = await $authHost.patch('api/product/' + id, product)
+        return data
+    } catch (error) {
+        console.log('catch: ', error)
+    }
+}
+
 export const fetchProducts = async (typeId, brandId, limit = 6, page, minPrice, maxPrice, search) => {
     try {
         const { data } = await $host.get('api/product', {

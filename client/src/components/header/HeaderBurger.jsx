@@ -1,13 +1,24 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 import myLogo from "../../images/logo/logo.svg";
 import heartIco from "../../images/control/heart.svg";
 import cartIco from "../../images/control/shoppingbag_84031.svg";
-import searchIco from "../../images/control/magnifier.svg";
 import userIco from "../../images/control/user.svg";
 import promotionIco from "../../images/icons/promotion.svg";
+import { observer } from "mobx-react-lite";
+import SearchField from "../SearchField";
+import { Context } from "../../index";
 
-function HeaderBurger() {
+const HeaderBurger = observer(() => {
+
+    const { user } = useContext(Context);
+        const isAuth = user.isAuth;
+    
+        useEffect(() => {
+            const token = localStorage.getItem('token');
+            user.setIsAuth(!!token && user.isAuth);
+        }, [user.isAuth]);
+
     return (
         <div>
             <div className="mobile-header d-lg-none">
@@ -26,14 +37,6 @@ function HeaderBurger() {
                             <span>салон оптики</span>
                         </div>
                     </Link>
-                    <div className="mobile-icons">
-                        <Link to="/favorites" className="mobile-icons-box">
-                            <img src={heartIco} alt="избранное" />
-                        </Link>
-                        <Link to="/cart" className="mobile-icons-box">
-                            <img src={cartIco} alt="корзина" />
-                        </Link>
-                    </div>
                 </div>
             </div>
             <div className="offcanvas offcanvas-start" tabIndex={-1} id="burgerMenu" aria-labelledby="burgerMenuLabel">
@@ -48,13 +51,8 @@ function HeaderBurger() {
                     <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Закрыть" />
                 </div>
                 <div className="offcanvas-body">
-                    <form className="mobile-search-form">
-                        <input className="mobile-search-input" type="text" placeholder="Поиск товаров..." />
-                        <button className="mobile-search-btn" type="submit">
-                            <img src={searchIco} alt="поиск" />
-                        </button>
-                    </form>
-                    <ul className="mobile-nav-list">
+                    <SearchField />
+                    <ul className="mobile-nav-list mt-2">
                         <li className="mobile-nav-item">
                             <NavLink
                                 className={({ isActive }) =>
@@ -124,6 +122,6 @@ function HeaderBurger() {
             </div>
         </div>
     );
-}
+})
 
 export default HeaderBurger;

@@ -27,7 +27,6 @@ const App = observer(() => {
 
   return (
     <Router>
-      <div className="wrapper">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/products" element={<Shop />} />
@@ -38,7 +37,6 @@ const App = observer(() => {
           <Route path="/reg" element={<RegistrationPage />} />    
           <Route path="*" element={<Navigate to="/" replace />} />       
         </Routes>
-      </div>
     </Router>
   );
 })

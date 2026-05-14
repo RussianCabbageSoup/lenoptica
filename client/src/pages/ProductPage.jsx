@@ -27,7 +27,7 @@ const ProductPage = observer(() => {
     console.log(brandName, typeName)
 
     return (   
-        <div>
+        <div className="wrapper">
             <Header />
             <section className="product-page">
                 <div className="container w1">

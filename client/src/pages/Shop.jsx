@@ -7,7 +7,7 @@ import { observer } from "mobx-react-lite";
 
 const Shop = observer(() => {
     return (  
-        <div>
+        <div className="wrapper">
             <Header />
             <Hero></Hero>
             <Products></Products>

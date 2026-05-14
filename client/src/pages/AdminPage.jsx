@@ -6,7 +6,7 @@ import { observer } from "mobx-react-lite";
 
 const AdminPage = observer(() => {
     return (  
-        <div>
+        <div className="wrapper">
             <Header />
             <Admin />
             <Footer />

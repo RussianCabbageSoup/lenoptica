@@ -75,17 +75,17 @@ class ProductController {
                 include: [
                     {
                         model: Type,
-                        as: 'type', 
-                        attributes: ['id', 'name'] 
+                        as: 'type',
+                        attributes: ['id', 'name']
                     },
                     {
                         model: Brand,
-                        as: 'brand', 
-                        attributes: ['id', 'name'] 
+                        as: 'brand',
+                        attributes: ['id', 'name']
                     }
                 ],
-                distinct: true, 
-                subQuery: false 
+                distinct: true,
+                subQuery: false
             };
 
             if (isValidLimit) {
@@ -113,6 +113,50 @@ class ProductController {
             },
         )
         return res.json(product)
+    }
+
+    async update(req, res, next) {
+        try {
+            const { id } = req.params;
+            const { name, price, quantity, description, brandId, typeId } = req.body;
+
+            const product = await Product.findByPk(id);
+
+            if (!product) {
+                return next(ApiError.notFound(`Продукт с id ${id} не найден`));
+            }
+
+            const updateData = {};
+            if (name !== undefined) updateData.name = name;
+            if (price !== undefined) updateData.price = price;
+            if (quantity !== undefined) updateData.quantity = quantity;
+            if (description !== undefined) updateData.description = description;
+            if (brandId !== undefined) updateData.brandId = brandId;
+            if (typeId !== undefined) updateData.typeId = typeId;
+
+            await product.update(updateData);
+
+            const updatedProduct = await Product.findByPk(id, {
+                include: [
+                    { model: Type, as: 'type', attributes: ['id', 'name'] },
+                    { model: Brand, as: 'brand', attributes: ['id', 'name'] }
+                ]
+            });
+
+            return res.json(updatedProduct);
+
+        } catch (error) {
+            next(ApiError.badRequest(error.message));
+        }
+    }
+
+    async remove(req, res, next) {
+        try {
+            const {id} = req.params;
+            
+        } catch (error) {
+            
+        }
     }
 }
 

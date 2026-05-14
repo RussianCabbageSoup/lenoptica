@@ -18,13 +18,14 @@ const ProductTable = observer(() => {
 
     const loadProducts = useCallback(async () => {
         try {
-            const data = await fetchProducts(null, null, null, null);
+            const data = await fetchProducts(null, null, null, null, null, null, product.tableSearch);
             product.setProducts(data.rows);
             product.setTotalCount(data.count);
+            console.log(data)
         } catch (error) {
             console.error('Ошибка загрузки товаров:', error);
         }
-    }, [product]);
+    }, [product.tableSearch]);
 
     useEffect(() => {
         loadProducts();
@@ -47,7 +48,7 @@ const ProductTable = observer(() => {
                 {product.products.map(product =>
                     <ProductTableItem 
                         key={product.id} 
-                        product={product} 
+                        item={product} 
                         typeMap={typeMap}
                         brandMap={brandMap}
                     />
