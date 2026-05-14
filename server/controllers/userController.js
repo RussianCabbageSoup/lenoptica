@@ -30,29 +30,41 @@ class UserController {
         const user = await User.create({ name, email, password: hashPassword, role })
         const basket = await Basket.create({ userId: user.id })
         const token = generateJWT(user.id, user.email, user.role)
-        return res.json({token})
+        return res.json({ token })
     }
 
     async login(req, res, next) {
-        const {email, password} = req.body
+        const { email, password } = req.body
         const user = await User.findOne({
-            where: {email}
+            where: { email }
         })
         if (!user) {
             return next(ApiError.internal('Пользователь не найден'))
         }
-        let comparePassword = bcrypt.compareSync(password, user.password) 
+        let comparePassword = bcrypt.compareSync(password, user.password)
         if (!comparePassword) {
             return next(ApiError.internal('Указан неверный пароль'))
         }
         const token = generateJWT(user.id, user.email, user.role)
-        
-        return res.json({token})
+
+        return res.json({ token })
     }
 
     async chechAuth(req, res, next) {
         const token = generateJWT(req.user.id, req.user.email, req.user.role)
-        return res.json({token})
+        return res.json({ token })
+    }
+
+    async getAll(req, res, next) {
+        try {
+            let { name, email, role, search } = req.query
+
+            const users = await User.findAndCountAll();
+            return res.json(users);
+
+        } catch (error) {
+            next(ApiError.badRequest(error.message))
+        }
     }
 }
 

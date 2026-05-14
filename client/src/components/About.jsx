@@ -15,11 +15,10 @@ function About() {
             setCurrentImage(window.innerWidth <= 750 ? photo2 : photo);
         };
 
-        updateImage(); // Устанавливаем начальное значение
+        updateImage(); 
 
         window.addEventListener('resize', updateImage);
 
-        // Очистка слушателя
         return () => {
             window.removeEventListener('resize', updateImage);
         };
@@ -39,7 +38,7 @@ function About() {
                             <img src={photo} alt="салон оптики" />
                         </div>
                         <div className="about__images-experience">
-                            <div className="about__experience-num">19+</div>
+                            <div className="about__experience-num">17+</div>
                             <div className="about__experience-text">лет безупречной<br />работы</div>
                         </div>
                     </div>
@@ -56,30 +55,30 @@ function About() {
                         <ul className="about__content-list">
                             <li className="about__list-item">
                                 <div className="about__item-ico">
-                                    <img src={starIco} />
+                                    <img src={starIco} alt="" />
                                 </div>
                                 <div className="about__item-text">
                                     <div className="about__item-key">Точная диагностика</div>
                                     <div className="about__item-value">
-                                        Современное оборудование от Zeiss и Nidek для
+                                        Современное оборудование от Nidek для
                                         проверки зрения с точностью до 0.1 диоптрии.</div>
                                 </div>
                             </li>
                             <li className="about__list-item">
                                 <div className="about__item-ico">
-                                    <img src={glassIco} />
+                                    <img src={glassIco} alt="" />
                                 </div>
                                 <div className="about__item-text">
                                     <div className="about__item-key">Только лицензированные бренды</div>
                                     <div className="about__item-value">
-                                        Ray-Ban, Polaroid, Gucci, Lindberg и другие мировые бренды с гарантией
+                                        Ray-Ban, Polaroid, Guess, Escada, Carolina Herrera и другие мировые бренды с гарантией
                                         подлинности.
                                     </div>
                                 </div>
                             </li>
                             <li className="about__list-item">
                                 <div className="about__item-ico">
-                                    <img src={personIco} />
+                                    <img src={personIco} alt="" />
                                 </div>
                                 <div className="about__item-text">
                                     <div className="about__item-key">Индивидуальный подход</div>
@@ -106,7 +105,7 @@ function About() {
                             </li>
                             <li className="about__achievements-item">
                                 <div className="about__item-stat">
-                                    <div className="about__stat-number">24ч</div>
+                                    <div className="about__stat-number">От 7 дней</div>
                                     <div className="about__stat-text">изготовление сложных линз</div>
                                 </div>
                             </li>

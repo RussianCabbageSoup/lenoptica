@@ -7,6 +7,8 @@ router.post('/reg', userController.registration);
 
 router.post('/login', userController.login);
 
-router.get('/auth',authMiddleware , userController.chechAuth);                 
+router.get('/auth' ,authMiddleware , userController.chechAuth);   
+
+router.get('/', userController.getAll)
 
 module.exports = router;

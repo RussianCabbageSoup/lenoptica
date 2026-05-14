@@ -29,7 +29,7 @@ function Contacts() {
                             <ul className="contacts__map-info">
                                 <li className="contacts__info-item">
                                     <div className="contacts__info-ico">
-                                        <img src={pinIco} />
+                                        <img src={pinIco} alt="" />
                                     </div>
                                     <div className="contacts__info-text">
                                         Санкт-Петербург, ТРК Питерлэнд, Приморский пр. 72
@@ -37,15 +37,15 @@ function Contacts() {
                                 </li>
                                 <li className="contacts__info-item">
                                     <div className="contacts__info-ico">
-                                        <img src={clockIco} />
+                                        <img src={clockIco} alt="" />
                                     </div>
                                     <div className="contacts__info-text">
-                                        Пн–Пт: 10:00 – 20:00
+                                        Ежедневно: 10:00 – 22:00
                                     </div>
                                 </li>
                                 <li className="contacts__info-item">
                                     <div className="contacts__info-ico">
-                                        <img src={phoneIco} />
+                                        <img src={phoneIco} alt="" />
                                     </div>
                                     <div className="contacts__info-text">
                                         +0 (000) 000-00-00
@@ -70,38 +70,38 @@ function Contacts() {
                                 <ul className="contacts__social-list">
                                     <li className="contacts__social-item">
                                         <div className="contacts__social-ico">
-                                            <img src={telegramIco} />
+                                            <img src={telegramIco} alt="" />
                                         </div>
                                         <div className="contacts__social-name">Telegram</div>
                                         <div className="contacts__social-btn">
-                                            <img src={arrowIco} />
+                                            <img src={arrowIco} alt="" />
                                         </div>
                                     </li>
                                     <li className="contacts__social-item">
                                         <div className="contacts__social-ico">
-                                            <img src={vkIco} />
+                                            <img src={vkIco} alt="" />
                                         </div>
                                         <div className="contacts__social-name">ВКонтакте</div>
                                         <div className="contacts__social-btn">
-                                            <img src={arrowIco} />
+                                            <img src={arrowIco} alt="" />
                                         </div>
                                     </li>
                                     <li className="contacts__social-item">
                                         <div className="contacts__social-ico">
-                                            <img src={maxIco} />
+                                            <img src={maxIco} alt="" />
                                         </div>
                                         <div className="contacts__social-name">Max</div>
                                         <div className="contacts__social-btn">
-                                            <img src={arrowIco} />
+                                            <img src={arrowIco} alt="" />
                                         </div>
                                     </li>
                                     <li className="contacts__social-item">
                                         <div className="contacts__social-ico">
-                                            <img src={mailIco} />
+                                            <img src={mailIco} alt="" />
                                         </div>
                                         <div className="contacts__social-name">Email</div>
                                         <div className="contacts__social-btn">
-                                            <img src={arrowIco} />
+                                            <img src={arrowIco} alt="" />
                                         </div>
                                     </li>
                                 </ul>

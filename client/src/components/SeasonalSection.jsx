@@ -23,15 +23,15 @@ function SeasonalSection() {
                             </div>
                             <ul className="seasonal__promotion-list">
                                 <li className="seasonal__promotion-item">
-                                    <img src={giftIco} />
-                                    Поляризационные линзы в подарок
+                                    <img src={giftIco} alt="" />
+                                    Оправа Mien в подарок
                                 </li>
                                 <li className="seasonal__promotion-item">
-                                    <img src={consultationIco} />
+                                    <img src={consultationIco} alt="" />
                                     Консультация врача
                                 </li>
                                 <li className="seasonal__promotion-item">
-                                    <img src={shieldIco} />
+                                    <img src={shieldIco} alt="" />
                                     Защита от ультрафиолета 100% UV400
                                 </li>
                             </ul>

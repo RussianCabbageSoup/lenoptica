@@ -18,8 +18,8 @@ const ProductTable = observer(() => {
 
     const loadProducts = useCallback(async () => {
         try {
-            const data = await fetchProducts(null, null, null, null, null, null, product.tableSearch);
-            product.setProducts(data.rows);
+            const data = await fetchProducts(null, null, null, null, null, null, product.tableSearch);        //       в зависимости от selectedTable
+            product.setProducts(data.rows);                                                                   //        Подгружать нужные данные
             product.setTotalCount(data.count);
             console.log(data)
         } catch (error) {

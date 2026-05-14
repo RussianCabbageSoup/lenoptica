@@ -64,7 +64,6 @@ export const fetchProducts = async (typeId, brandId, limit = 6, page, minPrice, 
     } catch (error) {
         console.log(error)
     }
-    
 }
 
 export const fetchSingleProduct = async (id) => {

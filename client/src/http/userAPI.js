@@ -15,9 +15,25 @@ export const login = async (email, password) => {
 
 export const check = async () => {
     try {
-        const { data } = await $authHost.get('api/user/auth')               
+        const { data } = await $authHost.get('api/user/auth')
         localStorage.setItem('token', data.token)
         return jwtDecode(data.token)
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const fetchUsers = async (name, email, role, search) => {
+    try {
+        const { data } = await $authHost.get('api/user', {
+            params: {
+                name,
+                email,
+                role,
+                search
+            }
+        })
+        return data
     } catch (error) {
         console.log(error)
     }

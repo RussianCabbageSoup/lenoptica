@@ -14,18 +14,9 @@ const Products = observer(() => {
             <div className="container">
                 <div className="products__inner">
                     <div className="products__head">
-                        <ul className="products__head-brands">
-                            <li className="products__brands-item">Ray-bAn</li>
-                            <li className="products__brands-item">PERSOL</li>
-                            <li className="products__brands-item">TOM FORD</li>
-                            <li className="products__brands-item">MASUNAGA</li>
-                            <li className="products__brands-item">MYKITA</li>
-                            <li className="products__brands-item">OLIVER PEOPLES</li>
-                        </ul>
                         <h2 className="products__head-title">Выберите свою пару</h2>
                         <div className="products__head-subtitle">
-                            Коллекция премиальных оправ и линз с защитой от синего
-                            света
+                            Коллекция премиальных оправ и линз
                         </div>
                     </div>
                     <div className="product__body">

@@ -27,7 +27,7 @@ function Footer() {
                                 <span>ЛенОптика</span>
                             </Link>
                             <p className="footer__about-text">
-                                Салон оптики с 18-летней историей.
+                                Салон оптики с 17-летней историей.
                                 Помогаем видеть мир ярче и чётче.
                             </p>
                             <div className="footer__about-icons">
