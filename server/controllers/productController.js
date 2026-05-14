@@ -152,10 +152,35 @@ class ProductController {
 
     async remove(req, res, next) {
         try {
-            const {id} = req.params;
-            
+            const { id } = req.params;
+
+            const product = await Product.findByPk(id);
+
+            if (!product) {
+                return next(ApiError.notFound(`Продукт с id ${id} не найден`));
+            }
+
+            await ProductInfo.destroy({
+                where: { productId: id }
+            });
+
+            await product.destroy();
+
+            if (product.img) {
+                const fs = require('fs');
+                const imagePath = path.resolve(__dirname, '..', 'static', product.img);
+                if (fs.existsSync(imagePath)) {
+                    fs.unlinkSync(imagePath);
+                }
+            }
+
+            return res.json({
+                message: `Продукт с id ${id} успешно удален`,
+                deletedProduct: product
+            });
+
         } catch (error) {
-            
+            next(ApiError.badRequest(error.message));
         }
     }
 }

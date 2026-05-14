@@ -11,6 +11,8 @@ export default class ProductStore {
         this._selectedBrand = {}
         this._selectedType = {}
         this._selectedProduct = {}
+        
+        this._selectedTable = ''
 
         this._minPrice = ''
         this._maxPrice = ''
@@ -84,6 +86,10 @@ export default class ProductStore {
         this._selectedProduct = product
     }
 
+    setSelectedTable(table) {
+        this._selectedTable = table
+    }
+
     get types() {
         return this._types
     }
@@ -134,5 +140,9 @@ export default class ProductStore {
 
     get selectedProduct() {
         return this._selectedProduct
+    }
+
+    get selectedTable() {
+        return this._selectedTable
     }
 }

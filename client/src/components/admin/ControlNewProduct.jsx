@@ -12,7 +12,7 @@ const ControlNewProduct = observer(() => {
 
     const [fileName, setFileName] = useState("");
     const [file, setFile] = useState(null);
-    const fileInputRef = useRef(null);                          
+    const fileInputRef = useRef(null);
     const [name, setName] = useState('');
     const [price, setPrice] = useState(0);
     const [quantity, setQuantity] = useState(0);
@@ -40,7 +40,7 @@ const ControlNewProduct = observer(() => {
 
     const addProduct = async (e) => {
         e.preventDefault();
-                
+
         try {
             const formData = new FormData()
             formData.append('name', name);
@@ -53,16 +53,20 @@ const ControlNewProduct = observer(() => {
 
             const data = await createProduct(formData);
             console.log('Товар добавлен:', data);
-            
+
             setName('');
             setPrice(0);
             setQuantity(0);
             setDescription('');
             setFile(null);
             setFileName('');
-            
+
+            if (fileInputRef.current) {
+                fileInputRef.current.value = '';
+            }
+
             await refreshProducts();
-            
+
         } catch (error) {
             console.error('Ошибка при добавлении товара:', error);
         }

@@ -38,6 +38,15 @@ export const updateProduct = async (product, id) => {
     }
 }
 
+export const removeProduct = async (id) => {
+    try {
+        const { data } = await $authHost.delete('api/product/' + id)
+        return data
+    } catch (error) {
+        console.log('catch: ', error)
+    }
+}
+
 export const fetchProducts = async (typeId, brandId, limit = 6, page, minPrice, maxPrice, search) => {
     try {
         const { data } = await $host.get('api/product', {
