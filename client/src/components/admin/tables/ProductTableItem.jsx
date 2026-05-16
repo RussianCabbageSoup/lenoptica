@@ -1,11 +1,11 @@
 import React, { useCallback, useContext } from "react";
-import editIco from "../../images/control/edit.svg";
-import deleteIco from "../../images/control/delete.svg";
+import editIco from "../../../images/control/edit.svg";
+import deleteIco from "../../../images/control/delete.svg";
 import { observer } from "mobx-react-lite";
-import { Context } from "../../index";
-import { fetchProducts, removeProduct } from "../../http/productAPI";
+import { Context } from "../../../index";
+import { fetchProducts, removeProduct } from "../../../http/productAPI";
 
-const ProductTableItem = observer(({ item, typeMap, brandMap }) => {
+const ProductTableItem = observer(({ item, typeMap, brandMap, tableType }) => {
 
     const { product } = useContext(Context)
 

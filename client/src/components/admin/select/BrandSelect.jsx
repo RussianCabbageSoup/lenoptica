@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import BrandSelectItem from "./BrandSelectItem";
-import { Context } from "../../index";
-import { createBrand, fetchBrands } from "../../http/productAPI";
+import { Context } from "../../../index";
+import { createBrand, fetchBrands } from "../../../http/productAPI";
 import { observer } from "mobx-react-lite";
 
 const BrandSelect = observer(({ selected }) => {
@@ -11,7 +11,7 @@ const BrandSelect = observer(({ selected }) => {
 
     useEffect(() => {
         fetchBrands().then(data => {
-            product.setBrands(data)
+            product.setBrands(data.rows)
 
             let defaultBrandId = null;
 

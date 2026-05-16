@@ -38,7 +38,7 @@ function LoginPage() {
                 <h2 className="login__title">Вход в аккаунт</h2>
                 <form className="login__form" onSubmit={e => handleSubmit(e)}>
                     <div className="login__form-input">
-                        <img src={mailIco} />
+                        <img src={mailIco} alt="" />
                         <input 
                             type="email" 
                             placeholder="Электронная почта" 
@@ -48,7 +48,7 @@ function LoginPage() {
                         />
                     </div>
                     <div className="login__form-input">
-                        <img src={passwordIco} />
+                        <img src={passwordIco} alt="" />
                         <input 
                             type="password" 
                             placeholder="Пароль" 

@@ -1,19 +1,17 @@
-import React, { useCallback, useContext, useEffect, useRef, useState } from "react";
-import editIco from "../../images/control/edit.svg";
-import BrandSelect from "./BrandSelect";
-import TypeSelect from "./TypeSelect";
-import { Context } from "../../index";
+import React, { useContext, useRef, useState, useCallback } from "react";
+import plusIco from "../../../images/icons/1486395885-plus_80605.svg";
+import BrandSelect from "../select/BrandSelect";
+import TypeSelect from "../select/TypeSelect";
+import { createProduct, fetchProducts } from "../../../http/productAPI";
+import { Context } from "../../../index";
 import { observer } from "mobx-react-lite";
-import { fetchProducts, updateProduct } from "../../http/productAPI";
 
-const ControlEditProduct = observer(() => {
+const ControlNewProduct = observer(() => {
 
-    const { product } = useContext(Context);
+    const { product } = useContext(Context)
 
-    const [selectedProduct, setSelectedProduct] = useState({})
-
-    const [file, setFile] = useState(null);
     const [fileName, setFileName] = useState("");
+    const [file, setFile] = useState(null);
     const fileInputRef = useRef(null);
     const [name, setName] = useState('');
     const [price, setPrice] = useState(0);
@@ -40,12 +38,11 @@ const ControlEditProduct = observer(() => {
         }
     }, [product]);
 
-    const editProduct = async (e) => {
+    const addProduct = async (e) => {
         e.preventDefault();
 
         try {
             const formData = new FormData()
-
             formData.append('name', name);
             formData.append('price', price);
             formData.append('quantity', quantity);
@@ -54,8 +51,8 @@ const ControlEditProduct = observer(() => {
             formData.append('typeId', product.selectedType);
             formData.append('img', file);
 
-            const data = await updateProduct(formData, selectedProduct.id);
-            console.log('Товар обновлен:', data);
+            const data = await createProduct(formData);
+            console.log('Товар добавлен:', data);
 
             setName('');
             setPrice(0);
@@ -64,6 +61,10 @@ const ControlEditProduct = observer(() => {
             setFile(null);
             setFileName('');
 
+            if (fileInputRef.current) {
+                fileInputRef.current.value = '';
+            }
+
             await refreshProducts();
 
         } catch (error) {
@@ -71,26 +72,13 @@ const ControlEditProduct = observer(() => {
         }
     }
 
-    useEffect(() => {
-        if (selectedProduct && selectedProduct.id) {
-            setName(selectedProduct.name || '');
-            setPrice(selectedProduct.price || 0);
-            setQuantity(selectedProduct.quantity || 0);
-            setDescription(selectedProduct.description || '');
-        }
-    }, [selectedProduct]);
-
-    useEffect(() => {
-        setSelectedProduct(product.selectedProduct)
-    }, [product.selectedProduct])
-
     return (
-        <div className="control__edit">
+        <div className="control__new">
             <div className="control__title">
-                <img src={editIco} alt="" />
-                <h2>Редактирование товара</h2>
+                <img src={plusIco} alt="" />
+                <h2>Новый товар</h2>
             </div>
-            <form className="control__form" onSubmit={editProduct}>
+            <form className="control__form" onSubmit={addProduct}>
                 <div className="form__group">
                     <label className="form__group-label">
                         Название товара
@@ -99,13 +87,13 @@ const ControlEditProduct = observer(() => {
                         type="text"
                         className="form__group-input"
                         placeholder="Введите название"
+                        required
                         value={name}
                         onChange={e => setName(e.target.value)}
-                        required
                     />
                 </div>
-                <TypeSelect selected={selectedProduct.typeId} />
-                <BrandSelect selected={selectedProduct.brandId} />
+                <TypeSelect />
+                <BrandSelect />
                 <div className="form__group">
                     <label className="form__group-label">
                         Цена (₽)
@@ -115,10 +103,10 @@ const ControlEditProduct = observer(() => {
                         className="form__group-input"
                         placeholder={0.00}
                         step={10.00}
-                        required
                         min={0}
+                        required
                         value={price}
-                        onChange={e => setPrice(e.target.value)}
+                        onChange={e => setPrice(Number(e.target.value))}
                     />
                 </div>
                 <div className="form__group">
@@ -130,10 +118,10 @@ const ControlEditProduct = observer(() => {
                         className="form__group-input"
                         placeholder={0}
                         step={1}
-                        required
                         min={0}
+                        required
                         value={quantity}
-                        onChange={e => setQuantity(e.target.value)}
+                        onChange={e => setQuantity(Number(e.target.value))}
                     />
                 </div>
                 <div className="form__group">
@@ -162,6 +150,7 @@ const ControlEditProduct = observer(() => {
                             type="file"
                             className="d-none"
                             accept=".jpg,.png,.jpeg"
+                            required
                             onChange={handleFileChange}
                         />
                         <input
@@ -173,10 +162,12 @@ const ControlEditProduct = observer(() => {
                         />
                     </div>
                 </div>
-                <button type="submit" className="form__button button">Сохранить</button>
+                <button type="submit" className="form__button button">
+                    Сохранить
+                </button>
             </form>
         </div>
     );
 })
 
-export default ControlEditProduct;
+export default ControlNewProduct;

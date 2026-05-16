@@ -12,7 +12,7 @@ export default class ProductStore {
         this._selectedType = {}
         this._selectedProduct = {}
         
-        this._selectedTable = ''
+        this._selectedTable = 'Товары'
 
         this._minPrice = ''
         this._maxPrice = ''

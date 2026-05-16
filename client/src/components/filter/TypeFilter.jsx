@@ -9,7 +9,7 @@ const TypeFilter = observer(() => {
     const {product} = useContext(Context);
 
     useEffect(() => {
-        fetchTypes().then(data => product.setTypes(data))
+        fetchTypes().then(data => product.setTypes(data.rows))
     }, []);
 
     return (

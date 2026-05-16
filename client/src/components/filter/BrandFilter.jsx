@@ -10,7 +10,7 @@ const BrandFilter = observer(() => {
     const {product} = useContext(Context);
 
     useEffect(() => {
-        fetchBrands().then(data => product.setBrands(data));
+        fetchBrands().then(data => product.setBrands(data.rows));
     }, []);
 
     return (

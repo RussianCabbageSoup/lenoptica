@@ -1,10 +1,9 @@
-import React, { useState } from "react";
-import ProductTable from "./ProductTable";
-import ControlNewProduct from "./ControlNewProduct";
-import ControlEditProduct from "./ControlEditProduct";
+import React from "react";
 import { observer } from "mobx-react-lite";
-import SearchAdmin from "./SearchAdmin";
-import TableSelect from "./TableSelect";
+import SearchAdmin from "./search/SearchAdmin";
+import TableSelect from "./tables/TableSelect";
+import TableSwitcher from "./tables/TableSwitcher";
+import ControlProduct from "./controls/ControlProduct";
 
 const Admin = observer(() => {
 
@@ -14,18 +13,12 @@ const Admin = observer(() => {
                 <div className="admin__dashboard">
                     <h2 className="dashboard__title title">Панель администратора</h2>
                     <TableSelect />
-                    <div className="dashboard__list-header">
-                        <h3>Список товаров</h3>
-                        <SearchAdmin />
-                    </div>
+                    <SearchAdmin />
                     <div className="dashboard__list">
-                        <ProductTable />
+                        <TableSwitcher />
                     </div>
                 </div>
-                <div className="admin__control">
-                    <ControlNewProduct />
-                    <ControlEditProduct />
-                </div>
+                <ControlProduct />
             </div>
         </div>
     );

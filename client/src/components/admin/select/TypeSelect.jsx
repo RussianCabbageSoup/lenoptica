@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Context } from "../../index";
+import { Context } from "../../../index";
 import TypeSelectItem from "./TypeSelectItem";
-import { createType, fetchTypes } from "../../http/productAPI";
+import { createType, fetchTypes } from "../../../http/productAPI";
 import { observer } from "mobx-react-lite";
 
 const TypeSelect = observer(({ selected }) => {
@@ -11,7 +11,7 @@ const TypeSelect = observer(({ selected }) => {
 
     useEffect(() => {
         fetchTypes().then(data => {
-            product.setTypes(data)
+            product.setTypes(data.rows)
 
             let defaultTypeId = null;
 
