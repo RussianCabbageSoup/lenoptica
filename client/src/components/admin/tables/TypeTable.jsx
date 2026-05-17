@@ -1,8 +1,8 @@
 import { observer } from "mobx-react-lite";
 import React, { useCallback, useContext, useEffect } from "react";
 import { Context } from "../../../index";
-import { fetchTypes } from "../../../http/productAPI";
-import TypeBrandTableItem from "./TypeBrandTableItem";
+import { fetchTypes } from "../../../http/typeAPI";
+import TypeTableItem from "./TypeTableItem";
 
 const TypeTable = observer(() => {
 
@@ -32,7 +32,7 @@ const TypeTable = observer(() => {
             </thead>
             <tbody>
                 {product.types.map(item =>
-                    <TypeBrandTableItem 
+                    <TypeTableItem 
                         key={item.id}
                         item={item}
                     />

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import BrandSelectItem from "./BrandSelectItem";
 import { Context } from "../../../index";
-import { createBrand, fetchBrands } from "../../../http/productAPI";
+import { createBrand, fetchBrands } from "../../../http/brandAPI";
 import { observer } from "mobx-react-lite";
 
 const BrandSelect = observer(({ selected }) => {
@@ -13,14 +13,13 @@ const BrandSelect = observer(({ selected }) => {
         fetchBrands().then(data => {
             product.setBrands(data.rows)
 
-            let defaultBrandId = null;
+            let defaultBrandId = data.rows[0].id;
 
             if (selected) {
                 defaultBrandId = selected;
             }
-            else if (data && data.length > 0) {
-                defaultBrandId = data[0].id;
-            }
+
+            console.log('id: ', data.rows[0])
 
             if (defaultBrandId) {
                 setSelectedBrand(defaultBrandId);

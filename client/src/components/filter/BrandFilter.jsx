@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 import tagIco from "../../images/icons/tag.svg";
 import BrandFilterItem from "./BrandFilterItem";
 import { Context } from "../../index";
-import { fetchBrands } from "../../http/productAPI";
+import { fetchBrands } from "../../http/brandAPI";
 import { observer } from "mobx-react-lite";
 
 const BrandFilter = observer(() => {

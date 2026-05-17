@@ -3,9 +3,9 @@ import editIco from "../../../images/control/edit.svg";
 import deleteIco from "../../../images/control/delete.svg";
 import { observer } from "mobx-react-lite";
 import { Context } from "../../../index";
-import { deleteProduct, fetchProducts } from "../../../http/productAPI";
+import { deleteBrand, fetchBrands } from "../../../http/brandAPI";
 
-const ProductTableItem = observer(({ item, typeMap, brandMap, tableType }) => {
+const BrandTableItem = observer(({ item }) => {
 
     const { product } = useContext(Context)
 
@@ -15,16 +15,15 @@ const ProductTableItem = observer(({ item, typeMap, brandMap, tableType }) => {
 
     const refreshProducts = useCallback(async () => {
         try {
-            const data = await fetchProducts(null, null, null, null);
-            product.setProducts(data.rows);
-            product.setTotalCount(data.count);
+            const data = await fetchBrands();
+            product.setBrands(data.rows);
         } catch (error) {
             console.error('Ошибка обновления таблицы:', error);
         }
-    }, [product.products]);
+    }, [product]);
 
     const handleDelete = async () => {
-        deleteProduct(item.id);
+        deleteBrand(item.id);
         await refreshProducts();
     }
 
@@ -32,10 +31,6 @@ const ProductTableItem = observer(({ item, typeMap, brandMap, tableType }) => {
         <tr>
             <td>{item.id}</td>
             <td>{item.name}</td>
-            <td>{typeMap.get(item.typeId) || item.typeId}</td>
-            <td>{brandMap.get(item.brandId) || item.brandId}</td>
-            <td>{item.price}</td>
-            <td>{item.quantity}</td>
             <td className="table__buttons">
                 <img
                     src={editIco}
@@ -52,4 +47,4 @@ const ProductTableItem = observer(({ item, typeMap, brandMap, tableType }) => {
     );
 })
 
-export default ProductTableItem;
+export default BrandTableItem;

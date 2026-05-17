@@ -8,7 +8,6 @@ const ProductList = observer(() => {
     const { product } = useContext(Context)
 
     useEffect(() => {
-
         const PAGE_LIMIT = 6
 
         fetchProducts(null, null, PAGE_LIMIT, 1).then(data => {
@@ -19,17 +18,24 @@ const ProductList = observer(() => {
     }, []);
 
     useEffect(() => {
-        fetchProducts(product.selectedType.id, product.selectedBrand.id, product.limit, product.page, product.minPrice, product.maxPrice, product.search).then(data => {
-            try {
-                product.setProducts(data.rows)
-                product.setTotalCount(data.count)
-            } catch (error) {
-                console.log(error)
-            }
-        })
+        const typeId = product.selectedType?.id ?? null;
+        const brandId = product.selectedBrand?.id ?? null;
+        
+        fetchProducts(typeId, brandId, product.limit, product.page, product.minPrice, product.maxPrice, product.search)
+            .then(data => {
+                try {
+                    product.setProducts(data.rows)
+                    product.setTotalCount(data.count)
+                } catch (error) {
+                    console.log(error)
+                }
+            })
+            .catch(error => {
+                console.error("Error fetching products:", error);
+            });
     }, [
-        product.selectedType.id,
-        product.selectedBrand.id,
+        product.selectedType?.id,
+        product.selectedBrand?.id,
         product.limit,
         product.page,
         product.minPrice,
@@ -38,15 +44,15 @@ const ProductList = observer(() => {
     ])
 
     const brandMap = useMemo(() => {
-        return new Map(product.brands.map(b => [b.id, b.name]));
+        return new Map(product.brands?.map(b => [b.id, b.name]) || []);
     }, [product.brands]);
 
     return (
         <div className="products__grid">
-            {product.products.map(product =>
+            {product.products.map(productItem =>
                 <ProductCard
-                    key={product.id}
-                    product={product}
+                    key={productItem.id}
+                    product={productItem}
                     brandMap={brandMap}
                 />
             )}

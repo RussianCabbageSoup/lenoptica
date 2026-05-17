@@ -150,7 +150,7 @@ class ProductController {
         }
     }
 
-    async remove(req, res, next) {
+    async delete(req, res, next) {
         try {
             const { id } = req.params;
 

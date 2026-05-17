@@ -1,33 +1,5 @@
 import { $host, $authHost } from "./index";
 
-export const createType = async (type) => {
-    const { data } = await $authHost.post('api/type', type)
-    return data
-}
-
-export const fetchTypes = async (search) => {
-    const { data } = await $host.get('api/type', {
-        params: {
-            search
-        }
-    })
-    return data
-}
-
-export const createBrand = async (brand) => {
-    const { data } = await $authHost.post('api/brand', brand)
-    return data
-}
-
-export const fetchBrands = async (search) => {
-    const { data } = await $host.get('api/brand', {
-        params: {
-            search
-        }
-    })
-    return data
-}
-
 export const createProduct = async (product) => {
     try {
         const { data } = await $authHost.post('api/product', product)
@@ -46,7 +18,7 @@ export const updateProduct = async (product, id) => {
     }
 }
 
-export const removeProduct = async (id) => {
+export const deleteProduct = async (id) => {
     try {
         const { data } = await $authHost.delete('api/product/' + id)
         return data

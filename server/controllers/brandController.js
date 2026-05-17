@@ -31,6 +31,28 @@ class BrandController {
             return res.status(500).json({ error: error.message });
         }
     }
+
+    async delete(req, res, next) {
+        try {
+            const { id } = req.params;
+
+            const brand = await Brand.findByPk(id);
+
+            if (!brand) {
+                return next(ApiError.notFound(`Продукт с id ${id} не найден`));
+            }
+
+            await brand.destroy();
+
+            return res.json({
+                message: `Бренд с id ${id} успешно удален`,
+                deletedBrand: brand
+            });
+
+        } catch (error) {
+            next(ApiError.badRequest(error.message));
+        }
+    }
 }
 
 module.exports = new BrandController();

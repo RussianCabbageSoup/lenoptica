@@ -3,7 +3,7 @@ import typeIco from "../../images/icons/type.svg";
 import TypeFilterItem from "./TypeFilterItem";
 import { Context } from "../../index";
 import { observer } from "mobx-react-lite";
-import { fetchTypes } from "../../http/productAPI";
+import { fetchTypes } from "../../http/typeAPI";
 
 const TypeFilter = observer(() => {
     const {product} = useContext(Context);

@@ -2,9 +2,11 @@ import React, { useContext, useEffect, useState } from "react";
 import Header from "../components/header/Header";
 import Footer from "../components/Footer";
 import { useParams } from "react-router-dom";
-import { fetchBrands, fetchSingleProduct, fetchTypes } from "../http/productAPI";
+import { fetchSingleProduct } from "../http/productAPI";
 import { observer } from "mobx-react-lite";
 import { Context } from "../index";
+import { fetchBrands } from "../http/brandAPI";
+import { fetchTypes } from "../http/typeAPI";
 
 const ProductPage = observer(() => {
 
