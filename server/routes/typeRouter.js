@@ -7,4 +7,8 @@ router.post('/',checkRole('ADMIN') , typeController.create);
 
 router.get('/', typeController.getAll);
 
+router.delete('/:id', typeController.delete)
+
+router.patch('/:id', typeController.update)
+
 module.exports = router

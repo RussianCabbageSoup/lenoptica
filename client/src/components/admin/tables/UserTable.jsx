@@ -15,7 +15,7 @@ const UserTable = observer(() => {
         } catch (error) {
             console.error('Ошибка загрузки:', error);
         }
-    }, [user.users, user.search]);
+    }, [user.search]);
 
     useEffect(() => {
         loadUsers();

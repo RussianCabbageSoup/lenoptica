@@ -15,7 +15,7 @@ const BrandTable = observer(() => {
         } catch (error) {
             console.error('Ошибка загрузки:', error);
         }
-    }, [product.brands, product.tableSearch]);
+    }, [product.tableSearch]);
 
     useEffect(() => {
         loadBrands();

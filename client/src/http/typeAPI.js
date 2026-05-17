@@ -13,3 +13,21 @@ export const fetchTypes = async (search) => {
     })
     return data
 }
+
+export const deleteType = async (id) => {
+    try {
+        const { data } = await $authHost.delete('api/type/' + id)
+        return data
+    } catch (error) {
+        console.log('catch: ', error)
+    }
+}
+
+export const updateType = async (type, id) => {
+    try {
+        const { data } = await $authHost.patch('api/type/' + id, type)
+        return data
+    } catch (error) {
+        console.log('catch: ', error)
+    }
+}

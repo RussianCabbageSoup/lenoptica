@@ -39,7 +39,7 @@ class BrandController {
             const brand = await Brand.findByPk(id);
 
             if (!brand) {
-                return next(ApiError.notFound(`Продукт с id ${id} не найден`));
+                return next(ApiError.notFound(`Бренд с id ${id} не найден`));
             }
 
             await brand.destroy();
@@ -48,6 +48,31 @@ class BrandController {
                 message: `Бренд с id ${id} успешно удален`,
                 deletedBrand: brand
             });
+
+        } catch (error) {
+            next(ApiError.badRequest(error.message));
+        }
+    }
+
+    async update(req, res, next) {
+        try {
+            const { id } = req.params;
+            const { name } = req.body;
+
+            const brand = await Brand.findByPk(id);
+
+            if (!brand) {
+                return next(ApiError.notFound(`brand с id ${id} не найден`));
+            }
+
+            const updateData = {};
+            if (name !== undefined) updateData.name = name;
+
+            await brand.update(updateData);
+
+            const updatedProduct = await Brand.findByPk(id);
+
+            return res.json(updatedProduct);
 
         } catch (error) {
             next(ApiError.badRequest(error.message));

@@ -24,7 +24,7 @@ const ProductTableItem = observer(({ item, typeMap, brandMap, tableType }) => {
     }, [product.products]);
 
     const handleDelete = async () => {
-        deleteProduct(item.id);
+        await deleteProduct(item.id);
         await refreshProducts();
     }
 

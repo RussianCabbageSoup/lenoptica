@@ -8,4 +8,6 @@ router.get('/', brandController.getAll);
 
 router.delete('/:id', brandController.delete)
 
+router.patch('/:id', brandController.update)
+
 module.exports = router

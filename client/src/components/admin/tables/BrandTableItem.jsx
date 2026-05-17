@@ -3,17 +3,15 @@ import editIco from "../../../images/control/edit.svg";
 import deleteIco from "../../../images/control/delete.svg";
 import { observer } from "mobx-react-lite";
 import { Context } from "../../../index";
-import { deleteBrand, fetchBrands } from "../../../http/brandAPI";
+import { deleteBrand, fetchBrands, updateBrand } from "../../../http/brandAPI";
+import { useState } from "react";
 
 const BrandTableItem = observer(({ item }) => {
-
     const { product } = useContext(Context)
+    const [isEditing, setIsEditing] = useState(false)
+    const [name, setName] = useState(item.name)
 
-    const setData = () => {
-        product.setSelectedProduct(item);
-    }
-
-    const refreshProducts = useCallback(async () => {
+    const refreshBrands = useCallback(async () => {
         try {
             const data = await fetchBrands();
             product.setBrands(data.rows);
@@ -22,20 +20,56 @@ const BrandTableItem = observer(({ item }) => {
         }
     }, [product]);
 
+    const handleEdit = async (e) => {
+        e.preventDefault()
+        setIsEditing(false)
+
+        try {
+            const formData = new FormData()
+            formData.append('name', name);
+
+            await updateBrand(formData, item.id)
+
+            await refreshBrands()
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     const handleDelete = async () => {
-        deleteBrand(item.id);
-        await refreshProducts();
+        try {
+            await deleteBrand(item.id);
+
+            await refreshBrands();
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     return (
         <tr>
             <td>{item.id}</td>
-            <td>{item.name}</td>
+            {isEditing ? (
+                <td>
+                    <form onSubmit={handleEdit}>
+                        <input
+                            className="table-input"
+                            type="text"
+                            value={name}
+                            onChange={e => setName(e.target.value)}
+                            onBlur={handleEdit}
+                            autoFocus 
+                        />
+                    </form>
+                </td>
+            ) : (
+                <td>{item.name}</td>
+            )}
             <td className="table__buttons">
                 <img
                     src={editIco}
                     alt="редактировать"
-                    onClick={setData}
+                    onClick={() => setIsEditing(true)}
                 />
                 <img
                     src={deleteIco}

@@ -15,7 +15,7 @@ const TypeTable = observer(() => {
         } catch (error) {
             console.error('Ошибка загрузки:', error);
         }
-    }, [product.types]);
+    }, [product.tableSearch]);
 
     useEffect(() => {
         loadTypes();
