@@ -1,5 +1,6 @@
 const { Type } = require('../models/models');
 const ApiError = require('../error/ApiError');
+const { Op } = require('sequelize');
 
 class TypeController {
     async create(req, res) {
@@ -9,8 +10,26 @@ class TypeController {
     }
 
     async getAll(req, res) {
-        const types = await Type.findAndCountAll()
-        return res.json(types);
+        try {
+            let { search } = req.query;
+            let whereCondition = {};
+
+            if (search && search.trim()) {
+                whereCondition = {
+                    name: { [Op.iLike]: `%${search}%` }
+                };
+            }
+
+            const types = await Type.findAndCountAll({
+                where: whereCondition,
+            });
+
+            return res.json(types);
+
+        } catch (error) {
+            console.error(error);
+            return res.status(500).json({ error: error.message });
+        }
     }
 }
 

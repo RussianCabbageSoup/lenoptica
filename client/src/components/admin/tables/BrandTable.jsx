@@ -10,12 +10,12 @@ const BrandTable = observer(() => {
 
     const loadBrands = useCallback(async () => {
         try {
-            const data = await fetchBrands();          
+            const data = await fetchBrands(product.tableSearch);          
             product.setBrands(data.rows);
         } catch (error) {
             console.error('Ошибка загрузки:', error);
         }
-    }, [product.brands]);
+    }, [product.brands, product.tableSearch]);
 
     useEffect(() => {
         loadBrands();

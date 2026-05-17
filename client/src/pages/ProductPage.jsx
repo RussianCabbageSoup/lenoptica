@@ -15,8 +15,8 @@ const ProductPage = observer(() => {
     
     useEffect(() => {
         fetchSingleProduct(id).then(data => setCurrentProduct(data))  
-        fetchBrands().then(data => product.setBrands(data))
-        fetchTypes().then(data => product.setTypes(data))
+        fetchBrands().then(data => product.setBrands(data.rows))
+        fetchTypes().then(data => product.setTypes(data.rows))
     }, [])
 
     console.log(product.types)

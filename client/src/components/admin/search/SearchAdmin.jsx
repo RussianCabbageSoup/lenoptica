@@ -12,7 +12,7 @@ const SearchAdmin = observer(() => {
     const { product } = useContext(Context);
     const selectedTable = product.selectedTable
 
-    switch (selectedTable) {
+    switch (selectedTable) {                       
         case TABLE_TYPES.PRODUCTS:
             return (
                 <ProductSearch />

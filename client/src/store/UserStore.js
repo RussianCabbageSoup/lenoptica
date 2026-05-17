@@ -7,6 +7,8 @@ export default class UserStore {
 
         this._users = []
 
+        this._search = ''
+
         makeAutoObservable(this)
     }
 
@@ -22,6 +24,10 @@ export default class UserStore {
         this._users = users
     }
 
+    setSearch(query) {
+        this._search = query
+    }
+
     get isAuth() {
         return this._isAuth
     }
@@ -32,5 +38,9 @@ export default class UserStore {
 
     get users() {
         return this._users
+    }
+
+    get search() {
+        return this._search
     }
 }

@@ -2,6 +2,7 @@ const { User, Basket } = require("../models/models");
 const ApiError = require('../error/ApiError');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const { Op } = require('sequelize');
 
 const generateJWT = (id, email, role) => {
     return jwt.sign(
@@ -57,13 +58,27 @@ class UserController {
 
     async getAll(req, res, next) {
         try {
-            let { name, email, role, search } = req.query
+            let { search } = req.query;
 
-            const users = await User.findAndCountAll();
+            let whereCondition = {};
+
+            if (search && search.trim()) {
+                whereCondition = {
+                    [Op.or]: [
+                        { name: { [Op.iLike]: `%${search}%` } },     
+                        { role: { [Op.iLike]: `%${search}%` } }       
+                    ]
+                };
+            }
+
+            const users = await User.findAndCountAll({
+                where: whereCondition,
+            });
+
             return res.json(users);
 
         } catch (error) {
-            next(ApiError.badRequest(error.message))
+            next(ApiError.badRequest(error.message));
         }
     }
 }

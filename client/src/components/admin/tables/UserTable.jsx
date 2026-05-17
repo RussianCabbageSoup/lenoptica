@@ -10,12 +10,12 @@ const UserTable = observer(() => {
 
     const loadUsers = useCallback(async () => {
         try {
-            const data = await fetchUsers();          
+            const data = await fetchUsers(user.search);          
             user.setUsers(data.rows);
         } catch (error) {
             console.error('Ошибка загрузки:', error);
         }
-    }, [user.users]);
+    }, [user.users, user.search]);
 
     useEffect(() => {
         loadUsers();

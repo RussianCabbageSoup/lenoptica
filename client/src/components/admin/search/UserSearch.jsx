@@ -5,36 +5,36 @@ import { Context } from "../../../index";
 
 const UserSearch = observer(() => {
 
-    // const { product } = useContext(Context);
+    const { user } = useContext(Context);
 
-    // useEffect(() => {
-    //     product.setTableSearch('');
-    // }, [])
+    useEffect(() => {
+        user.setSearch('');
+    }, [])
 
-    // const [query, setQuery] = useState('');
+    const [query, setQuery] = useState('');
 
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
+    const handleSubmit = (e) => {
+        e.preventDefault();
 
-    //     if (query.trim()) {
-    //         product.setTableSearch(query.trim());
-    //     } else {
-    //         product.setTableSearch('');
-    //     }
-    // }
+        if (query.trim()) {
+            user.setSearch(query.trim());
+        } else {
+            user.setSearch('');
+        }
+    }
 
     return (
         <div className="dashboard__list-header">
             <h3>Список пользователей</h3>
             <form className="list__header-search" 
-            // onSubmit={handleSubmit} 
+                onSubmit={handleSubmit} 
             >
                 <img src={searchIco} alt="" />
                 <input
                     type="text"
                     placeholder="Поиск по имени, роли"
-                    // value={query}
-                    // onChange={e => setQuery(e.target.value)}
+                    value={query}
+                    onChange={e => setQuery(e.target.value)}
                 />
             </form >
         </div>

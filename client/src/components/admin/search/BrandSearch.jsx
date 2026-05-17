@@ -5,36 +5,36 @@ import { Context } from "../../../index";
 
 const BrandSearch = observer(() => {
 
-    // const { product } = useContext(Context);
+    const { product } = useContext(Context);
 
-    // useEffect(() => {
-    //     product.setTableSearch('');
-    // }, [])
+    useEffect(() => {
+        product.setTableSearch('');
+    }, [])
 
-    // const [query, setQuery] = useState('');
+    const [query, setQuery] = useState('');
 
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
+    const handleSubmit = (e) => {
+        e.preventDefault();
 
-    //     if (query.trim()) {
-    //         product.setTableSearch(query.trim());
-    //     } else {
-    //         product.setTableSearch('');
-    //     }
-    // }
+        if (query.trim()) {
+            product.setTableSearch(query.trim());
+        } else {
+            product.setTableSearch('');
+        }
+    }
 
     return (
         <div className="dashboard__list-header">
             <h3>Список брендов</h3>
             <form className="list__header-search" 
-            // onSubmit={handleSubmit} 
+                onSubmit={handleSubmit} 
             >
                 <img src={searchIco} alt="" />
                 <input
                     type="text"
                     placeholder="Поиск по названию"
-                    // value={query}
-                    // onChange={e => setQuery(e.target.value)}
+                        value={query}
+                        onChange={e => setQuery(e.target.value)}
                 />
             </form >
         </div>

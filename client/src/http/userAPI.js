@@ -23,13 +23,10 @@ export const check = async () => {
     }
 }
 
-export const fetchUsers = async (name, email, role, search) => {
+export const fetchUsers = async (search) => {
     try {
         const { data } = await $authHost.get('api/user', {
             params: {
-                name,
-                email,
-                role,
                 search
             }
         })

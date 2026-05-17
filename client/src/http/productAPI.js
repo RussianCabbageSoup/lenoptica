@@ -5,8 +5,12 @@ export const createType = async (type) => {
     return data
 }
 
-export const fetchTypes = async () => {
-    const { data } = await $host.get('api/type')
+export const fetchTypes = async (search) => {
+    const { data } = await $host.get('api/type', {
+        params: {
+            search
+        }
+    })
     return data
 }
 
@@ -15,8 +19,12 @@ export const createBrand = async (brand) => {
     return data
 }
 
-export const fetchBrands = async () => {
-    const { data } = await $host.get('api/brand')
+export const fetchBrands = async (search) => {
+    const { data } = await $host.get('api/brand', {
+        params: {
+            search
+        }
+    })
     return data
 }
 

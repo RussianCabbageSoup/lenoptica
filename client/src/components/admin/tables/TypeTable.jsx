@@ -10,7 +10,7 @@ const TypeTable = observer(() => {
 
     const loadTypes = useCallback(async () => {
         try {
-            const data = await fetchTypes();          
+            const data = await fetchTypes(product.tableSearch);          
             product.setTypes(data.rows);
         } catch (error) {
             console.error('Ошибка загрузки:', error);
