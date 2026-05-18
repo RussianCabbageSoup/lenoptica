@@ -81,6 +81,28 @@ class UserController {
             next(ApiError.badRequest(error.message));
         }
     }
+
+    async delete(req, res, next) {
+        try {
+            const { id } = req.params;
+
+            const user = await User.findByPk(id);
+
+            if (!user) {
+                return next(ApiError.notFound(`user с id ${id} не найден`));
+            }
+
+            await user.destroy();
+
+            return res.json({
+                message: `user с id ${id} успешно удален`,
+                deletedUser: user
+            });
+
+        } catch (error) {
+            next(ApiError.badRequest(error.message));
+        }
+    }
 }
 
 module.exports = new UserController()

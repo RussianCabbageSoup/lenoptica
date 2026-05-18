@@ -11,4 +11,6 @@ router.get('/auth' ,authMiddleware , userController.chechAuth);
 
 router.get('/', userController.getAll)
 
+router.delete('/:id', userController.delete)
+
 module.exports = router;

@@ -17,7 +17,7 @@ module.exports = function (req, res, next) {
         next()
     } catch (error) {
         res.status(401).json({
-            message: "не авторизован"
+            message: error
         })
     }
 }

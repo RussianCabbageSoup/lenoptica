@@ -35,3 +35,12 @@ export const fetchUsers = async (search) => {
         console.log(error)
     }
 }
+
+export const deleteUser = async (id) => {
+    try {
+        const { data } = await $authHost.delete('api/user/' + id)
+        return data
+    } catch (error) {
+        console.log('catch: ', error)
+    }
+}
