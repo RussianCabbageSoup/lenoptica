@@ -8,6 +8,7 @@ const User = sequelize.define('user', {
     email: {type: DataTypes.STRING, unique: true},
     password: {type: DataTypes.STRING},
     role: {type: DataTypes.STRING, defaultValue: "USER"},
+    img: {type: DataTypes.STRING ,allowNull: true}
 });
 
 const Basket = sequelize.define('basket', {

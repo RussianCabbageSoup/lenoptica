@@ -9,6 +9,8 @@ export default class UserStore {
 
         this._search = ''
 
+        this._isEditing = false
+
         makeAutoObservable(this)
     }
 
@@ -28,6 +30,10 @@ export default class UserStore {
         this._search = query
     }
 
+    setIsEditing(bool) {
+        this._isEditing = bool
+    }
+
     get isAuth() {
         return this._isAuth
     }
@@ -42,5 +48,9 @@ export default class UserStore {
 
     get search() {
         return this._search
+    }
+
+    get isEditing() {
+        return this._isEditing
     }
 }

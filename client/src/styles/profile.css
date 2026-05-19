@@ -1,3 +1,53 @@
+.edit-menu {
+    width: 100%;
+    min-width: 250px;
+    padding: 11px;
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-menu__cancel {
+    align-self: flex-end;
+    margin-bottom: 8px;
+    cursor: pointer;
+}
+
+.edit-menu__cancel img {
+    width: 20px;
+}
+
+.edit-menu__form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.edit-menu__form-input {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.404);
+    border-radius: 30px;
+    padding: 8px 18px;
+}
+
+.edit-menu__form-input img {
+    width: 20px;
+    opacity: 0.5;
+    user-select: none;
+}
+
+.edit-menu__form-input input {
+    width: 100%;
+}
+
+.edit-menu__form-btn.button {
+    font-size: 18px;
+    padding: 6px 13px;
+}
+
+
 .profile__inner {
     display: flex;
     gap: 30px;
@@ -29,10 +79,28 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+    border: 1px solid rgb(107, 107, 107);
+}
+
+.profile__avatar-edit {
+    position: absolute;
+    top: 75%;
+    left: 75%;
+    padding: 1px 6px;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #b49f8d;
+    border: 1px solid rgb(107, 107, 107);
+}
+
+.profile__avatar-edit img {
+    width: 20px;
 }
 
 .profile__avatar-name {
     font-size: 26px;
+    white-space: nowrap;
 }
 
 .profile__avatar-email {

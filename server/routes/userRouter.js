@@ -13,4 +13,6 @@ router.get('/', userController.getAll)
 
 router.delete('/:id', userController.delete)
 
+router.patch('/:id', userController.update)
+
 module.exports = router;
