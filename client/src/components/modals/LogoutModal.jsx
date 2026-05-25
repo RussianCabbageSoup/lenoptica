@@ -4,13 +4,15 @@ import { Context } from "../../index";
 import { useNavigate } from "react-router-dom";
 
 const LogoutModal = observer(() => {
-    
-    const {user} = useContext(Context);
+
+    const { user } = useContext(Context);
     const navigate = useNavigate();
 
     const handleLogout = () => {
-        user.setUser({});
-        user.setIsAuth(false);
+        if (user.user) {
+            user.setUser({});
+            user.setIsAuth(false);
+        }
         localStorage.removeItem('token');
         navigate('/');
     };

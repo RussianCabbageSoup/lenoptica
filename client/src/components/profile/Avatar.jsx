@@ -13,12 +13,12 @@ const Avatar = observer(() => {
     const { user } = useContext(Context)
     const isEditing = user.isEditing
 
-    const loadUser = useCallback( async () => {
-        const data = await check()
-        console.log(data)
-        user.setUser(data)
-        console.log(user.user.name)
-    }, [])
+    // const loadUser = useCallback( async () => {
+    //     const data = await check()
+    //     console.log(data)
+    //     user.setUser(data)
+    //     console.log(user.user.name)
+    // }, [])
 
     const getInitials = (name) => {
         if (!name) return null;
@@ -29,9 +29,9 @@ const Avatar = observer(() => {
 
     console.log('Рендер Avatar, user.user:', user.user.name);
 
-    useEffect(() => {
-        loadUser();
-    }, [])
+    // useEffect(() => {
+    //     loadUser();
+    // }, [])
 
     return (
         <div className="profile__avatar">

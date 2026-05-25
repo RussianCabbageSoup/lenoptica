@@ -18,7 +18,9 @@ const Basket = sequelize.define('basket', {
 const BasketProduct = sequelize.define('basket_product', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
 });
-
+                                                                            //   сделать таблицу роли и для слайдера    
+                                                                            //   сделать изменение роли в админке и слайдер    
+                                                                            //   юзабалити валидация и тд
 const Product = sequelize.define('product', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
     name: {type: DataTypes.STRING},

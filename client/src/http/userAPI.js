@@ -23,11 +23,22 @@ export const login = async (email, password) => {
 
 export const check = async () => {
     try {
+        const token = localStorage.getItem('token');
+
+        if (!token) {
+            throw new Error('No token found');
+        }
+
         const { data } = await $authHost.get('api/user/auth')
-        localStorage.setItem('token', data.token)
+
+        if (data.token && data.token !== token) {
+            localStorage.setItem('token', data.token)
+        }
+
         return jwtDecode(data.token)
     } catch (error) {
-        console.log(error)
+        console.log('Check auth failed:', error)
+        throw error;
     }
 }
 

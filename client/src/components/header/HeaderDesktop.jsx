@@ -14,6 +14,7 @@ import SearchField from "../SearchField";
 const HeaderDesktop = observer(() => {
     const { user } = useContext(Context);
     const isAuth = user.isAuth;
+    const isAdmin = user?.user?.role === 'ADMIN';
 
     useEffect(() => {
         const token = localStorage.getItem('token');
@@ -44,14 +45,16 @@ const HeaderDesktop = observer(() => {
                             <Link to="/profile" className="header__icons-item">
                                 <img src={userIco} alt="профиль" />
                             </Link>
-                            <Link to="/cart" className="header__icons-item"> 
+                            <Link to="/cart" className="header__icons-item">
                                 <img src={cartIco} alt="корзина" />
                             </Link>
-                            <div className="header__top-buttons">
-                                <Link to="/admin" className="header__top-btn">
-                                    Админ
-                                </Link>
-                            </div>
+                            {isAdmin && (
+                                <div className="header__top-buttons">
+                                    <Link to="/admin" className="header__top-btn">
+                                        Админ
+                                    </Link>
+                                </div>
+                            )}
                             <button className="header__icons-item" data-bs-toggle="modal" data-bs-target="#logoutModal">
                                 <img src={logoutIco} alt="Выйти" />
                             </button>
